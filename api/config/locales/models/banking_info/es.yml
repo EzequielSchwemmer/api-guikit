@@ -1,0 +1,18 @@
+---
+es:
+  activerecord:
+    models:
+      banking_info:
+        one: Información bancaria por usuario
+        other: Información bancaria por usuario
+    attributes:
+      banking_info:
+        holder: Dueño de la cuenta
+        holder_name: Nombre del dueño de la cuenta
+        bank_name: Entidad
+        bank_alias: Alias
+        user:
+          one: Consumidor
+        created_at: Fecha de creación
+        updated_at: Fecha de edición
+

@@ -1,0 +1,32 @@
+= form_for page.resource, url: { action: :review }, method: :post do |f|
+  = f.label :ticket_discounts
+  - if f.object.ticket_discounts.count.zero?
+    .small-margin = t('activerecord.messages.ticket.no_discounts')
+    hr
+  - else  
+    table.small-margin
+      theader
+        tr
+          th = t('activerecord.attributes.ticket_discount.discount')
+          th = t('activerecord.attributes.ticket_discount.active')
+      tbody
+        = f.fields_for :ticket_discounts do |td|
+          tr
+            td
+              h4 = td.object.discount.discount_type
+              h5 = td.object.discount.title
+              div
+                span = td.object.discount.description
+            td.reject_column
+              = td.hidden_field :id
+              = td.check_box :active, class: 'reject-reason_check'
+              = render("reject_reasons_modal", td: td)
+  .field-grid
+    = f.label :refund
+    .form-field
+      = f.number_field :refund, step: :any, value: f.object.refund.to_f, min: 0, max: Ticket::MAX_REFUND / 100
+      = render("field_errors", field: :refund, f: f)
+      = render("field_errors", field: :refund_cents, f: f)
+      = render("field_errors", field: :refund_currency, f: f)
+  .form-actions
+    = f.submit t('activerecord.actions.ticket.review')

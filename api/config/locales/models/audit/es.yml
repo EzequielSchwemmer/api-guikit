@@ -1,0 +1,17 @@
+es:
+  activerecord: &audit_values
+    models:
+      audit:
+        one: Cambio
+        other: Cambios
+    actions:
+      audit:
+        create: Exportar Cambios
+    attributes:
+      audit:
+        since: Desde
+        upto: Hasta
+        limit: Limite de registros
+        offset: Saltear registros
+  activemodel:
+    <<: *audit_values

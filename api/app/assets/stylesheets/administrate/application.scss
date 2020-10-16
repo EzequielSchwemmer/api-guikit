@@ -1,0 +1,49 @@
+/*
+ * This are required external scss dependencies:
+ *
+ *= require flexslider
+ *= require font-awesome
+ */
+ 
+@charset "utf-8";
+
+@import "reset/normalize";
+
+@import "selectize";
+@import "datetime_picker";
+
+@import "library/clearfix";
+@import "library/data-label";
+@import "library/variables";
+
+@import "base/forms";
+@import "base/layout";
+@import "base/lists";
+@import "base/paddings";
+@import "base/tables";
+@import "base/typography";
+
+@import "components/app-container";
+@import "components/attributes";
+@import "components/buttons";
+@import "components/cells";
+@import "components/discounts";
+@import "components/field-unit";
+@import "components/flashes";
+@import "components/form-actions";
+@import "components/grid-form";
+@import "components/main-content";
+@import "components/sidebar";
+@import "components/navigation";
+@import "components/pagination";
+@import "components/search";
+
+@import "components/tickets";
+@import "components/roles";
+@import "components/users";
+@import "components/modal";
+@import "components/products";
+@import "components/jquery-ui-theme";
+@import "components/tabs";
+
+@import "utilities/text-color";

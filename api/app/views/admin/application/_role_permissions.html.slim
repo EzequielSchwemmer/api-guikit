@@ -1,0 +1,8 @@
+.role-permissions
+  - f.object.permission_sets.each do |set|
+    .role-permissions__group class="role-permissions__#{set}"
+      h3 = t("activerecord.models.#{set}", count: 1000000)
+      .role-permissions__fields
+        - f.object.permissions_for(set).each do |permission|
+          = f.check_box permission, disabled: disabled
+          = f.label permission, t("activerecord.attributes.permissions.#{permission}")

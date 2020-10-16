@@ -1,0 +1,19 @@
+es:
+  activerecord:
+    models:
+      user_discount:
+        one: Descuento de usuario
+        other: Descuentos de usuarios
+        admin: Descuentos de %{name}
+    attributes:
+      user_discount:
+        discount_id: ID
+        user: Consumidor
+        discount: Descuento
+        refresh: Actualizar descuentos asignados
+        discount_type: Tipo
+        title: Título
+        segments: Segmentos
+        created_at: Fecha de creación
+        updated_at: Última actualización
+

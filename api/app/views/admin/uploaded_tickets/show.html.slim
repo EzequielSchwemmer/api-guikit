@@ -1,0 +1,9 @@
+- content_for(:title) do
+  = t("administrate.actions.show_resource", name: page.page_title)
+header.main-content__header role="banner"
+  h1.main-content__page-title
+    = content_for(:title)
+section.main-content__body
+  .ticket-view
+    = render("ticket_slider", ticket: page.resource)
+    = render("reject_ticket", resource: page.resource)

@@ -1,0 +1,15 @@
+- content_for(:title) do
+  = t("administrate.actions.show_resource", name: page.page_title)
+header.main-content__header role="banner"
+  h1.main-content__page-title
+    = content_for(:title)
+section.main-content__body
+  .ticket-view
+    = render("ticket_slider", ticket: page.resource)
+    .big-margin
+      dl.attribute-set
+        - page.attributes.each do |attribute|
+          dt.attribute-label id=attribute.name
+            = t("activerecord.attributes.#{resource_name}.#{attribute.name}", default: attribute.name.titleize)
+          dd class="attribute-data attribute-data--#{attribute.html_class}"
+            = render_field attribute, page: page

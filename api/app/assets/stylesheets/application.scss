@@ -1,0 +1,105 @@
+/*
+ *= require selectize
+ *= require selectize.default
+ */
+
+$input-background-color: #f2f2f2;
+$main-white: #FFFFFF;
+$main-font: Quicksand, sans-serif;
+$button-color: linear-gradient(180deg,#f5a623,#f76b1c);
+$body-bg-color: linear-gradient(200deg, #0049f9 50%, #05a5ff);
+$box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+$header-box-shadow: 0 5px 25px 0 rgba(0,0,0,.3);
+$flash-success-color: #21b737;
+@import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+@import 'jquery-ui/autocomplete.css';
+
+body {
+  background: $body-bg-color;
+  width: 100%;
+  height: 100vh;
+  font-family: $main-font;
+
+  hidden_element {
+    display: none;
+  }
+
+  header {
+    background-color: $main-white;
+    box-shadow: $header-box-shadow;
+    flex-direction: column;
+    height: 70px;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+
+    h1{
+      margin-left: 150px;
+      font-size: 30px;
+      font-weight: 700;
+    }
+  }
+
+  footer {
+    font-size: 12px;
+  }
+
+  .container {
+    width: 360px;
+    padding: 10% 0 0;
+    margin: auto;
+    text-align: center;
+
+    .box {
+      position: relative;
+      background: $main-white;
+      max-width: 360px;
+      margin: 0 auto 100px;
+      padding: 45px;
+      box-shadow: $box-shadow;
+
+      .flash {
+        text-align: center;
+        font-size: 12px;
+        ul {
+          padding-inline-start: 7%;
+        }
+        .errors {
+          color: red;
+        }
+        .success {
+          color: $flash-success-color;
+        }
+      }
+
+      input {
+        font-family: $main-font;
+        outline: 0;
+        background: $input-background-color;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+
+      input[type=submit] {
+        font-family: $main-font;
+        text-transform: uppercase;
+        outline: 0;
+        background: $button-color;
+        width: 100%;
+        border: 0;
+        padding: 15px;
+        color: $main-white;
+        font-size: 14px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+    }
+  }
+}

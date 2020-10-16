@@ -1,0 +1,32 @@
+---
+es:
+  activerecord:
+    errors:
+      models:
+        admin_user:
+            attributes:
+                birthday:
+                    invalid_age: debe ser mayor de 16 años
+    models:
+      admin_user: 
+        one: Usuario
+        other: Usuarios
+    attributes:
+      admin_user:
+        id: ID
+        uid: Identificador interno
+        encrypted_password: Contraseña encriptada
+        reset_password_token: Token de reinicio de contraseña
+        reset_password_at: Último intento de reinicio de contraseña
+        remember_created_at: Fecha de recúerdame
+        failed_attemps: Intentos fallidos
+        unlock_token: Token de desbloqueo
+        locked_at: Fecha de bloqueo
+        created_at: Fecha de creación
+        updated_at: Última actualización
+        name: Nombre
+        birthday: Fecha de nacimiento
+        role: Rol
+        password: Contraseña
+        password_confirmation: Confirmar contraseña
+

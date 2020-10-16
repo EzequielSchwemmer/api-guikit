@@ -1,0 +1,44 @@
+{
+    "data": [
+        {
+            "id": "12",
+            "type": "obtained_discount",
+            "attributes": {
+                "created_at": "2019-06-04T17:56:21.271Z",
+                "title": "Intelligent Marble Bag",
+                "discount_type": "Gorgeous Iron Computer",
+                "description": "Chuck Norris does not use exceptions when programming. He has not been able to identify any of his code that is not exceptional.",
+                "status": "penalized",
+                "picture": "http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBVZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--63af33ec7f3cbc8cae29dfea78f996ef477433f1/test_image.png"
+            }
+        },
+        {
+            "id": "13",
+            "type": "obtained_discount",
+            "attributes": {
+                "created_at": "2019-06-04T17:56:25.655Z",
+                "title": "Small Plastic Bottle",
+                "discount_type": "Fantastic Marble Table",
+                "description": "Chuck Norris does not use revision control software. None of his code has ever needed revision.",
+                "status": "penalized",
+                "picture": "http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBVdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80fe302c18035c49bf9d702dd910ef329a41c727/test_image.png"
+            }
+        },
+        {
+            "id": "14",
+            "type": "obtained_discount",
+            "attributes": {
+                "created_at": "2019-06-04T17:56:56.464Z",
+                "title": "Small Plastic Bottle",
+                "discount_type": "Fantastic Marble Table",
+                "description": "Chuck Norris does not use revision control software. None of his code has ever needed revision.",
+                "status": "reviewed",
+                "picture": "http://localhost:3000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBVdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80fe302c18035c49bf9d702dd910ef329a41c727/test_image.png"
+            }
+        }
+    ],
+    "meta": {
+        "total_pages": 1,
+        "current_page": 1
+    }
+}

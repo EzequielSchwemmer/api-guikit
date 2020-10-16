@@ -1,0 +1,7 @@
+.field-unit__label
+  = f.label field.attribute
+.field-unit__group
+  .field-unit__field
+    = f.number_field field.attribute, min: 1, max: Rails.application.secrets.boost_points_limit
+  .field-unit__errors
+    = render "field_errors", field: field.attribute, f: f

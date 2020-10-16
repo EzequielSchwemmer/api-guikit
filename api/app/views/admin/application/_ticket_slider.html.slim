@@ -1,0 +1,15 @@
+.flexslider.ticket-slider
+  ul.slides
+    - ticket.pictures.each do |pic|
+      li
+        img.ticket src=url_for(pic)
+
+.zoom-modal.modal
+  span.close &times;
+  img.modal-image.modal-content
+  #nav
+    input type="button" value=("Acercar")
+    input type="button" value=("Alejar")
+
+= content_for :javascript_includes do
+  = javascript_include_tag "admin/forms/tickets.js"

@@ -1,0 +1,9 @@
+es:
+  activerecord:
+    models:
+      branch:
+        one: Sucursal
+        other: Sucursales
+    attributes:
+      branch:
+        name: Nombre

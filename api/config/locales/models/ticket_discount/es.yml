@@ -1,0 +1,24 @@
+es:
+  activerecord:
+    models:
+      ticket_discount:
+        one: Descuento en ticket
+        other: Descuentos en ticket
+    attributes:
+      ticket_discount:
+        ticket: Ticket
+        discount: Descuento
+        active: Válida
+        created_at: Fecha de creación
+        updated_at: Última actualización
+        original_cost: Puntaje gastado
+    enums:
+      ticket_discount:
+        ticket_status:
+          pending: Pendiente
+          accepted: Aceptado
+          rejected: Rechazado
+          deleted: Eliminado
+    actions:
+      ticket_discount:
+        reject_reason: Motivo de reechazo

@@ -1,0 +1,6 @@
+= form_for([namespace, page.resource], html: { class: "form" }) do |f|
+  .field-grid
+    - page.attributes.each do |attribute|
+      = render_field attribute, f: f
+  .form-actions
+    = render partial: 'form-submit', locals: { f: f }

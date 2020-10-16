@@ -1,0 +1,6 @@
+- content_for(:title)
+  = I18n.t('activerecord.actions.audit.create')
+header.main-content__header role="banner"
+  h1.main-content__page-title = content_for(:title)
+  div = link_to t("administrate.actions.back"), :back, class: "button"
+section.main-content__body = render "form", page: page

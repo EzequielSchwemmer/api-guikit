@@ -1,0 +1,53 @@
+- content_for(:title) do
+  = t("admin.actions.database.export")
+header.main-content__header role="banner"
+  h1.main-content__page-title
+    = t("admin.actions.database.export")
+section.main-content__body
+  = form_for page.resource, url: export_admin_async_database_url, method: :post, html: { class: 'form' } do |f|
+    p = t('admin.actions.database.async_warning', limit: export_limit)
+    hr
+    .form-actions
+      = f.submit t("admin.actions.database.async_request"), data: { disable_with: false }
+  hr
+  h2 = t('admin.messages.database.export_async.in_process')
+  - if in_process.count.zero?
+    p = t('admin.messages.database.export_async.none')
+  - else
+    table
+      thead
+        tr
+          th = t('activerecord.attributes.async_export.created_at')
+          th = t('activerecord.attributes.async_export.admin_user')
+      tbody
+        - in_process.each do |export|
+          tr
+            td = I18n.localize(export.created_at)
+            td
+              a href=admin_admin_user_path(export.admin_user)
+                = export.admin_user.name
+  hr
+  h2 = t('admin.messages.database.export_async.ready')
+  p = t('admin.actions.database.async_remove_warning', days: export_days, next_days: export_days + 1)
+  - if available.count.zero?
+    p = t('admin.messages.database.export_async.none')
+  - else
+    table
+      thead
+        tr
+          th = t('activerecord.attributes.async_export.created_at')
+          th = t('activerecord.attributes.async_export.admin_user')
+          th = t('activerecord.attributes.async_export.actions')
+      tbody
+        - available.each do |export|
+          tr
+            td = I18n.localize(export.created_at)
+            td
+              a href=admin_admin_user_path(export.admin_user)
+                = export.admin_user.name
+            td style="display:flex"
+              = form_for export, url: download_admin_async_database_path(request_id: export.id) do |f|
+                = f.submit t('activerecord.attributes.async_export.download'), data: { disable_with: false }
+              div = '&nbsp;'.html_safe
+              = form_for export, url: admin_async_database_path(request_id: export.id), method: :delete do |f|
+                = f.submit t('activerecord.attributes.async_export.destroy'), class: 'button danger'

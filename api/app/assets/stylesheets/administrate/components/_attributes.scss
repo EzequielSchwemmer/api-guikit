@@ -1,0 +1,34 @@
+.attribute-set {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  margin-left: 1rem;
+}
+
+.attribute-label {
+  margin-top: 0;
+  margin-bottom: $base-spacing / 2;
+}
+
+.preserve-whitespace {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.attribute-data {
+  margin-bottom: $base-spacing / 2;
+  margin-left: 2rem;
+}
+
+.attribute--nested {
+  border: $base-border;
+  padding: $small-spacing;
+}
+
+.field-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+  align-items: center;
+}
+

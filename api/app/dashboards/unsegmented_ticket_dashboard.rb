@@ -1,0 +1,2 @@
+class UnsegmentedTicketDashboard < DigitalizedTicketDashboard
+end

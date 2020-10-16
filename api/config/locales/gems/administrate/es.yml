@@ -1,0 +1,77 @@
+---
+es:
+  administrate:
+    navigation:
+      messages:
+        hello: Hola, %{name} -
+    actions:
+      confirm: ¿Estás seguro?
+      destroy: Eliminar
+      edit: Editar
+      edit_resource: 'Editar [%{name}]'
+      show_resource: 'Mostrar [%{name}]'
+      new_resource: Crear
+      back: Volver
+      sign_out: Cerrar sesión
+    controller:
+      create:
+        success: "%{resource} fue creado exitosamente."
+      destroy:
+        success: "%{resource} fue eliminado exitosamente."
+      update:
+        success: "%{resource} fue actualizado exitosamente."
+      reviewed:
+        success: "%{resource} fue validado exitosamente."
+    fields:
+      has_many:
+        more: Mostrando %{count} de %{total_count}
+        none: ---
+      nested_has_many:
+        add: Agregar
+        remove: Remover
+    form:
+      error:
+        one: un error
+        other: "%{count} errores"
+      errors: "%{pluralized_errors} evitaron que este %{resource_name} se guardara:"
+    search:
+      clear: Borrar búsqueda
+      label: Buscar %{resource}
+  helpers:
+    label:
+      user:
+        name: Nombre
+        birthday: Fecha De Nacimiento
+        created_at: Fecha De creación
+        updated_at: Fecha De Última Edición
+        sign_in_count: Número De Ingresos
+        banking_info: Información Bancaria
+      admin_user:
+        name: Nombre
+        birthday: Fecha De Nacimiento
+        created_at: Fecha De creación
+        updated_at: Fecha De Última Edición
+        sign_in_count: Número De Ingresos
+        role: Rol
+      product:
+        name: Nombre
+        code: Código
+        created_at: Fecha De creación
+        updated_at: Fecha De Última Edición
+      banking_info:
+        user: Usuario
+        bank_name: Nombre Del Banco
+        created_at: Fecha De creación
+        updated_at: Fecha De Última Edición
+        bank_alias: Alias
+      purchased_products_by_user:
+        product: Producto
+        user: Usuario
+        created_at: Fecha De creación
+        updated_at: Fecha De Última Edición
+      role:
+        name: Nombre
+        users: Usuarios
+        created_at: Fecha De creación
+        updated_at: Fecha De Última Edición
+

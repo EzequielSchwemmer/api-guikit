@@ -1,0 +1,20 @@
+#tabs
+  ul
+    li
+      a href="#tabs-1"  Individual
+    li
+      a href="#tabs-2"  Por Segmento
+  #tabs-1
+    = form_for(page.resource, url: { action: :create }, method: :post, html: { class: "form" }) do |f|
+      .field-grid
+        - page.attributes.each do |attribute|
+          = render_field attribute, f: f
+      .form-actions
+        = f.submit t('admin.actions.push_notifications.send')
+  #tabs-2
+    = form_for(segment_notification_page.resource, url: { action: :create_segment_notification }, method: :post, html: { class: "form" }) do |f|
+      .field-grid
+        - segment_notification_page.attributes.each do |attribute|
+          = render_field attribute, f: f
+      .form-actions
+        = f.submit t('admin.actions.push_notifications.send')

@@ -1,0 +1,3 @@
+en:
+  any_presence:
+    blank: "At least one of the following fields can't be blank: "

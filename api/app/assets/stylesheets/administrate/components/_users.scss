@@ -1,0 +1,49 @@
+/*  
+  Hides actions from the segments displayed on the user shoe view
+  Kinda hacky but there's no other option, currently waiting for 
+  https://github.com/thoughtbot/administrate/pull/1152 to be merged
+*/
+
+table[aria-labelledby='segments'] > tbody > tr[role='link'] > td:nth-last-child(-n+4) {
+  display: none;
+}
+
+table[aria-labelledby='segments'] > thead > tr > th:nth-last-child(-n+4) {
+  display: none;
+}
+
+.points_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.points_table {
+  display: grid;
+  grid-template-columns: auto auto;
+
+  .title {
+    padding-right: 48px;
+    font-weight: bolder;
+  }
+
+  .operator {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    font-weight: bold;
+    line-height: 8px;
+    padding-right: 12px;
+  }
+
+  .result {
+    grid-column: 1 / span 2;
+    border: 1px solid gray;
+  }
+
+  .value {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;    
+  }
+}

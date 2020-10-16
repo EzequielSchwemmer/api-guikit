@@ -1,0 +1,27 @@
+es:
+  activerecord:
+    errors:
+      models:
+        ticket_line:
+          attributes:
+            price:
+              invalid_currency: El valor del precio es inválido
+            discount_price:
+              invalid_currency: El valor del precio con descuento es inválido
+    models:
+      ticket_line:
+        one: Fila de ticket
+        other: Filas de ticket
+    attributes:
+      ticket_line:
+        product: Producto
+        ticket: Ticket
+        price_cents: Precio (centavos)
+        price_currency: Moneda del precio
+        discount_price_cents: Precio con descuento (centavos)
+        discount_price_currency: Moneda del precio con descuento
+        amount: Cantidad
+        price: Precio de lista
+        discount_price: Precio con descuento
+        created_at: Fecha de creación
+        updated_at: Última actualización        

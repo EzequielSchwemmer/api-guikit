@@ -1,0 +1,54 @@
+- content_for(:title) do
+  = t("admin.actions.database.export")
+header.main-content__header role="banner"
+  h1.main-content__page-title
+    = t("admin.actions.database.export")
+section.main-content__body
+  = form_for page.resource, url: { action: 'export' }, html: { class: 'form' } do |f|
+    fieldset
+      legend = t('admin.views.database.export.select_tables')
+      .export-database-fields
+        - page.resource.model_keys.each do |key|
+          = f.check_box key
+          = f.label key, t("activerecord.models.#{key}", count: 10000)
+    hr
+    fieldset
+      legend = t('admin.views.database.export.options')
+      .export-database-options
+        = fields_for page.resource.options do |opts|
+          .field-grid
+            = opts.label :since, t('admin.fields.database.export.options.since')
+            div
+              = opts.date_field :since
+              .field-unit__errors
+                = render "field_errors", field: :since, f: opts
+            = opts.label :upto, t('admin.fields.database.export.options.upto')
+            div
+              = opts.date_field :upto
+              .field-unit__errors
+                = render "field_errors", field: :upto, f: opts
+          .field-grid
+            = opts.label :spacing_rows, t('admin.fields.database.export.options.spacing_rows')
+            div
+              = opts.number_field :spacing_rows, min: 0, max: 10
+              .field-unit__errors
+                = render "field_errors", field: :spacing_rows, f: opts
+            = opts.label :spacing_columns, t('admin.fields.database.export.options.spacing_columns')
+            div
+              = opts.number_field :spacing_columns, min: 0, max: 10
+              .field-unit__errors
+                = render "field_errors", field: :spacing_columns, f: opts
+          .field-grid
+            = opts.label :limit, t('admin.fields.database.export.options.limit')
+            div
+              = opts.number_field :limit, min: 1, max: 10_000_000
+              .field-unit__errors
+                = render "field_errors", field: :limit, f: opts
+            = opts.label :offset, t('admin.fields.database.export.options.offset')
+            div
+              = opts.number_field :offset, min: 0
+              .field-unit__errors
+                = render "field_errors", field: :offset, f: opts
+    hr
+    .form-actions
+      = f.submit t("admin.actions.database.export"), data: { disable_with: false }

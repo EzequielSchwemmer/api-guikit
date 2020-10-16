@@ -1,0 +1,18 @@
+es:
+  activerecord:
+    models:
+      push_notification_log:
+        one: Registro PUSH
+        other: Registros PUSH
+    attributes:
+      push_notification_log:
+        sender_id: ID Remitente
+        recipient_id: ID Destinaatario
+        title: Título
+        body: Mensaje
+        origin: Origen
+        type: Tipo de notificación
+        created_at: Fecha de creación
+        updated_at: Última actualización
+        deleted_at: Fecha de eliminación
+        target_topic: Tópico enviado

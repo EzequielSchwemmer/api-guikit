@@ -1,0 +1,6 @@
+tr.nested-fields
+  td.form-field
+    = f.text_field :name
+    = render("field_errors", field: :name, f: f)
+  td.form-field
+    = link_to_remove_association "×", f, class: 'button remove-element'

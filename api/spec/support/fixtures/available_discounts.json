@@ -1,0 +1,160 @@
+{
+    "data": [
+        {
+            "id": "26",
+            "type": "user_discount",
+            "relationships": {
+                "discount": {
+                    "data": {
+                        "id": "61",
+                        "type": "discount"
+                    }
+                }
+            }
+        },
+        {
+            "id": "27",
+            "type": "user_discount",
+            "relationships": {
+                "discount": {
+                    "data": {
+                        "id": "62",
+                        "type": "discount"
+                    }
+                }
+            }
+        },
+        {
+            "id": "28",
+            "type": "user_discount",
+            "relationships": {
+                "discount": {
+                    "data": {
+                        "id": "63",
+                        "type": "discount"
+                    }
+                }
+            }
+        },
+        {
+            "id": "29",
+            "type": "user_discount",
+            "relationships": {
+                "discount": {
+                    "data": {
+                        "id": "64",
+                        "type": "discount"
+                    }
+                }
+            }
+        },
+        {
+            "id": "30",
+            "type": "user_discount",
+            "relationships": {
+                "discount": {
+                    "data": {
+                        "id": "65",
+                        "type": "discount"
+                    }
+                }
+            }
+        },
+        {
+            "id": "31",
+            "type": "user_discount",
+            "relationships": {
+                "discount": {
+                    "data": {
+                        "id": "66",
+                        "type": "discount"
+                    }
+                }
+            }
+        }
+    ],
+    "included": [
+        {
+            "id": "61",
+            "type": "discount",
+            "attributes": {
+                "title": "Ergonomic Iron Hat",
+                "description": "Chuck Norris can write infinite recursion functions... and have them return.",
+                "discount_type": "Synergistic Cotton Bag",
+                "cost": 52,
+                "current_points": 1248,
+                "sufficient": true,
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBlUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--aa4d322f659de8da2b413cadf1b56d63bcc30d3b/test_image.png"
+            }
+        },
+        {
+            "id": "62",
+            "type": "discount",
+            "attributes": {
+                "title": "Mediocre Cotton Plate",
+                "description": "Chuck Norris does not use revision control software. None of his code has ever needed revision.",
+                "discount_type": "Small Linen Keyboard",
+                "cost": 31,
+                "current_points": 1248,
+                "sufficient": true,
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBlZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8dc45ce5e6bd1151e8c6537171f509e316fe05ce/test_image.png"
+            }
+        },
+        {
+            "id": "63",
+            "type": "discount",
+            "attributes": {
+                "title": "Practical Marble Bench",
+                "description": "Chuck Norris compresses his files by doing a flying round house kick to the hard drive.",
+                "discount_type": "Synergistic Copper Bottle",
+                "cost": 13,
+                "current_points": 1248,
+                "sufficient": true,
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBldz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--f7bd2b4a1efea4edb3ecdeaea7d7307237b0c56f/test_image.png"
+            }
+        },
+        {
+            "id": "64",
+            "type": "discount",
+            "attributes": {
+                "title": "Durable Cotton Knife",
+                "description": "When Chuck Norris points to null, null quakes in fear.",
+                "discount_type": "Gorgeous Wool Bench",
+                "cost": 33,
+                "current_points": 1248,
+                "sufficient": true,
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBmQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--89c4a047f9829abd67923dc4c91b188caa132663/test_image.png"
+            }
+        },
+        {
+            "id": "65",
+            "type": "discount",
+            "attributes": {
+                "title": "Gorgeous Linen Keyboard",
+                "description": "Chuck Norris's keyboard doesn't have a Ctrl key because nothing controls Chuck Norris.",
+                "discount_type": "Ergonomic Marble Table",
+                "cost": 40,
+                "current_points": 1248,
+                "sufficient": true,
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBmUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--e2d51846feccf9eb1f0c6f7518a8a5a8feacd939/test_image.png"
+            }
+        },
+        {
+            "id": "66",
+            "type": "discount",
+            "attributes": {
+                "title": "Intelligent Steel Car",
+                "description": "Chuck Norris hosting is 101% uptime guaranteed.",
+                "discount_type": "Practical Bronze Coat",
+                "cost": 83,
+                "current_points": 1248,
+                "sufficient": true,
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBmZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--533d6505040c09466664ad0d9dc08dc0526b0484/test_image.png"
+            }
+        }
+    ],
+    "meta": {
+        "total_pages": 1,
+        "current_page": 1
+    }
+}

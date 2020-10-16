@@ -1,0 +1,45 @@
+ul#sidebar.sidebar.sidebar__show
+  - Administrate::Namespace.new(namespace).resources.each do |resource|
+    - # BUGFIX: Using class_from_resource is required to make index? work with pundit
+    - if in_sidebar?(resource)
+      li.sidebar__item
+        = link_to([namespace, resource_index_route_key(resource)], class: "sidebar__link sidebar__link--#{nav_link_state(resource)}") do
+          i.fa.fa-fw class="fa-#{resource_icon_for(resource)}"
+          .sidebar__text
+            = display_resource_name(resource)
+          .sidebar__item__badge = class_from_resource(resource).all.count
+  - # valid_action? does not work when not using resources and policy(pundit_user, Database) attempts to get "ModulePolicy"
+  - if DatabasePolicy.new(pundit_user, nil).show?
+    li.sidebar__item
+      = navbar_link_to(admin_database_path) do
+        i.fa.fa-fw.fa-download
+        .sidebar__text = t('admin.actions.database.export')
+    li.sidebar__item
+      = navbar_link_to(admin_async_database_path) do
+        i.fa.fa-fw.fa-download
+        .sidebar__text = t('admin.actions.database.export_async')
+  - if AuditPolicy.new(pundit_user, nil).new?
+    li.sidebar__item
+      = navbar_link_to(new_admin_audit_path) do
+        i.fa.fa-fw.fa-download
+        .sidebar__text = t('admin.actions.audits.create')
+  - if PushNotificationPolicy.new(pundit_user, nil).new?
+    li.sidebar__item
+      = navbar_link_to(new_admin_push_notification_path) do
+        i.fa.fa-fw.fa-envelope
+        .sidebar__text = t('admin.actions.push_notifications.send')
+  - if RewardPolicy.new(pundit_user, nil).create?
+    li.sidebar__item
+      = navbar_link_to(new_admin_reward_path) do
+        i.fa.fa-fw.fa-trophy
+        .sidebar__text = t('admin.actions.rewards.create')
+  - if DatabasePolicy.new(pundit_user, nil).show_import_user_segments?
+    li.sidebar__item
+      = navbar_link_to(import_user_segments_admin_database_path) do
+        i.fa.fa-fw.fa-upload
+        .sidebar__text = t('admin.actions.database.import.user_segments')
+  - # used as empty spacing
+  li.sidebar__item.sidebar__spacing
+.sidebar__action
+  button#sidebar-action.sidebar__action__button
+    i.fa.fa-fw.fa-fh.fa-chevron-left

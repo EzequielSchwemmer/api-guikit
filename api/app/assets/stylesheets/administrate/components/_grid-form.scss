@@ -1,0 +1,33 @@
+.grid-form {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 8px;
+  align-items: center;
+  margin: 8px;
+  margin-bottom: 12px;
+}
+
+.ticket-lines {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(4, 1fr) auto;
+}
+
+.remove-element {
+  background: red;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 8px;
+  row-gap: 12px;
+  align-items: center;
+  margin: 24px;
+}
+
+.field-unit__relationship {
+  padding: 8px;
+  border-radius: 8px;
+  background: $grey-0;
+}

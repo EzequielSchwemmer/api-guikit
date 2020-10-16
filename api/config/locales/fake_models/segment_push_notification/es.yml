@@ -1,0 +1,23 @@
+es:
+  activerecord:
+    models:
+      segment_push_notification:
+        one: Notificación Push
+        other: Notificaciones Push
+  activemodel:
+    models:
+      segment_push_notification:
+        one: Notificación Push
+        other: Notificaciones Push
+    attributes:
+      segment_push_notification:
+        segments: Segmentos
+        segment_ids: Segmentos
+        title: Título
+        body: Mensaje
+    errors:
+      models:
+        segment_push_notification:
+          attributes:
+            segments_ids:
+              select_user: Debe seleccionar segmentos

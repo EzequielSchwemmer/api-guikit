@@ -1,0 +1,34 @@
+- content_for(:title) do
+  = t("administrate.actions.show_resource", name: page.page_title)
+header.main-content__header role="banner"
+  h1.main-content__page-title
+    = content_for(:title)
+  div
+    - if valid_action?(:edit) && show_action?(:edit, page.resource)
+      = link_to(t("administrate.actions.edit_resource", name: page.page_title), [:edit, namespace, page.resource], class: "button")
+section.main-content__body
+  .discount-form
+    img.discount-image src=url_for(page.resource.picture)
+    .discount-fields
+      dl.attribute-set.discount-attributes
+        - page.attributes.each do |attribute|
+          dt.attribute-label id=attribute.name
+            = t("activerecord.attributes.#{resource_name}.#{attribute.name}", default: attribute.name).titleize
+          dd class="attribute-data attribute-data--#{attribute.html_class}"
+            = render_field attribute, page: page
+  hr
+  .discount-relationships
+    dl
+      dt.attribute-label id='steps'
+        = t("activerecord.attributes.discount.steps").titleize
+      dd class="attribute-data attribute-data--steps"
+        ol.discount-steps
+          - page.resource.steps.each do |step|
+            li = step.text
+    dl
+      dt.attribute-label id='segments'
+        = t("activerecord.attributes.discount.segments").titleize
+      dd class="attribute-data attribute-data--segments"
+        ul.discount-segments
+          - page.resource.segments.each do |segment|
+            li = segment.name

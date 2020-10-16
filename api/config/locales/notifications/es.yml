@@ -1,0 +1,27 @@
+es:
+  notifications:
+    users:
+      tickets:
+        discounts:
+          positive:
+            title: Ticket aprobado
+            body:  ¡Procesamos tu ticket, y se han verificado todos los descuentos! Procederemos a realizar el reintegro dentro de los 10 días hábiles 🎉.
+          negative:
+            title: Ticket rechazado
+            body: Uy. Procesamos tu ticket y no cumple con los T&C de los beneficios canjeados. Te invitamos a seguir sumando puntos y te recordamos que es clave que revises los T&C antes de realizar un canje 🙂.
+          neutral:
+            title: Ticket revisado
+            body: Procesamos tu ticket y alguno de tus canjes no cumple los T&C, Revisá la sección Mis Canjes en la App para más información 🔍.
+        reviewed:
+          title: Ticket revisado
+          body: Tu ticket fue revisado, lo estamos procesando
+        rejected:
+          title: Ticket rechazado
+          body: Tu ticket fue rechazado por "%{reason}"
+      inactive:
+        title: ¡Te extrañamos!
+        body: ¡%{username}, cargá nuevos tickets para conseguir increíbles descuentos!
+    topics:
+      discounts:
+        title: Nuevos descuentos
+        body: ¡Tenes nuevos descuentos disponibles en tu cuenta!

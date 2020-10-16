@@ -1,0 +1,9 @@
+es:
+  activerecord:
+    general:
+      attributes:
+        deleted_status: Estado en BDD
+      enums:
+        deleted_status:
+          inactive: Inactivo
+          active: Activo

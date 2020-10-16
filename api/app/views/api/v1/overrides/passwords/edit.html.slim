@@ -1,0 +1,29 @@
+header
+  nav
+    a
+      h1
+        'Administrador de tickets.
+.container
+  h1
+    = t('devise_token_auth.passwords.title')
+  .box
+    = form_for(@resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+      = f.hidden_field :reset_password_token
+      = hidden_field_tag :user_id, @resource.id
+      .field
+        = f.label :password, t('devise_token_auth.passwords.new_password')
+        = f.password_field :password, autofocus: true
+      .field
+        = f.label :password_confirmation, t('devise_token_auth.passwords.confirm_new_password')
+        = f.password_field :password_confirmation
+      .flash
+        - if flash[:error].present?
+          .errors
+            ul
+              - flash[:error].each do |msg|
+                li = msg
+        - if flash[:success].present?
+          .success
+            = flash[:success]
+      .actions
+        = f.submit

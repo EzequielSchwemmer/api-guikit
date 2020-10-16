@@ -1,0 +1,112 @@
+{
+    "data": [
+        {
+            "id": "29",
+            "type": "discount",
+            "attributes": {
+                "title": "Rustic Concrete Shirt",
+                "description": "Chuck Norris' protocol design method has no status, requests or responses, only commands.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBWUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--66284cbba875f538f2b206e93f1aca01be3246e8/test_image.png"
+            }
+        },
+        {
+            "id": "40",
+            "type": "discount",
+            "attributes": {
+                "title": "Small Wooden Gloves",
+                "description": "Whiteboards are white because Chuck Norris scared them that way.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBZQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8e8562dade3ce7fa87aa35b1d01cb4abe8be9c7b/test_image.png"
+            }
+        },
+        {
+            "id": "46",
+            "type": "discount",
+            "attributes": {
+                "title": "Synergistic Cotton Shoes",
+                "description": "Chuck Norris' beard is immutable.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBaZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--27a4ca68af7ab0c94c01a694d9d79b0e115d045d/test_image.png"
+            }
+        },
+        {
+            "id": "36",
+            "type": "discount",
+            "attributes": {
+                "title": "Heavy Duty Copper Chair",
+                "description": "Chuck Norris can instantiate an abstract class.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBYQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--1e0b785212d605209bf21ada6d3ba2aa43f2141d/test_image.png"
+            }
+        },
+        {
+            "id": "49",
+            "type": "discount",
+            "attributes": {
+                "title": "Aerodynamic Paper Pants",
+                "description": "When a bug sees Chuck Norris, it flees screaming in terror, and then immediately self-destructs to avoid being roundhouse-kicked.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBhUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6540b2c667838de76d65f64b96679a6ffcb3ecb9/test_image.png"
+            }
+        },
+        {
+            "id": "32",
+            "type": "discount",
+            "attributes": {
+                "title": "Sleek Iron Watch",
+                "description": "Chuck Norris can't test for equality because he has no equal.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBXQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--89b0c373ba030107975b69a3fbe6ac758bc4bdeb/test_image.png"
+            }
+        },
+        {
+            "id": "35",
+            "type": "discount",
+            "attributes": {
+                "title": "Enormous Concrete Bag",
+                "description": "There is nothing regular about Chuck Norris' expressions.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBXdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c3cfb5192c54e5f258e4ad846a52314507f884d9/test_image.png"
+            }
+        },
+        {
+            "id": "45",
+            "type": "discount",
+            "attributes": {
+                "title": "Enormous Bronze Lamp",
+                "description": "Chuck Norris's beard can type 140 wpm.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBaUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--6e4a0288d876a8c5a7660c31b29e223c78fc08a7/test_image.png"
+            }
+        },
+        {
+            "id": "42",
+            "type": "discount",
+            "attributes": {
+                "title": "Lightweight Cotton Clock",
+                "description": "There is no Esc key on Chuck Norris' keyboard, because no one escapes Chuck Norris.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBZZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--8eddd12f0f0dea059d142640693e07439fcad4cf/test_image.png"
+            }
+        },
+        {
+            "id": "28",
+            "type": "discount",
+            "attributes": {
+                "title": "Awesome Plastic Hat",
+                "description": "Chuck Norris doesn't delete files, he blows them away.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBWQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--9243a2bc61315da0583c6b1bd35689d2d35418d1/test_image.png"
+            }
+        },
+        {
+            "id": "33",
+            "type": "discount",
+            "attributes": {
+                "title": "Practical Wool Bottle",
+                "description": "Chuck Norris doesn't have performance bottlenecks. He just makes the universe wait its turn.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBXUT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--c579236979d73c1e6b9db32736af317822a62f5d/test_image.png"
+            }
+        },
+        {
+            "id": "27",
+            "type": "discount",
+            "attributes": {
+                "title": "Small Plastic Bottle",
+                "description": "Chuck Norris does not use revision control software. None of his code has ever needed revision.",
+                "picture": "http://localhost:30000/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBVdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--80fe302c18035c49bf9d702dd910ef329a41c727/test_image.png"
+            }
+        }
+    ]
+}

@@ -1,0 +1,39 @@
+es:
+  admin:
+    discounts:
+      form:
+        change_image: Cambiar imagen
+  activerecord:
+    errors:
+      models:
+        discount:
+          attributes:
+            starts_at:
+              before_end: Debe ser posterior o igual a la fecha de fin
+            ends_at:
+              after_start: Debe ser anterior o igual a la fecha de inicio  
+    actions:
+      discount:
+        add_segment: Agregar segmento
+        add_step: Agregar paso
+    models:
+      discount:
+        one: Descuento
+        other: Descuentos
+    attributes:
+      discount:
+        id: ID
+        discount_type: Tipo
+        title: Título
+        cost: Puntos
+        product_description: Descripción del producto
+        description: Descripción del descuento
+        starts_at: Fecha de inicio
+        ends_at: Fecha de fin
+        steps: Pasos
+        segments: Segmentos
+        active: ¿Activa?
+        created_at: Fecha de creación
+        terms_and_conditions: Términos y condiciones
+        featured: ¿En landing?
+

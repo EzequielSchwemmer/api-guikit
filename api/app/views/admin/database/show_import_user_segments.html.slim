@@ -1,0 +1,13 @@
+- content_for(:title) do
+  = t("admin.actions.database.import.user_segments")
+header.main-content__header role="banner"
+  h1.main-content__page-title
+    = t("admin.actions.database.import.user_segments")
+section.main-content__body
+  = form_for object, url: { action: 'import_user_segments' }, html: { class: 'form', multipart: true } do |f|
+    fieldset
+      legend = t('admin.views.database.import.user_segments')
+      = f.file_field :file, required: true
+    hr
+    .form-actions
+      = f.submit t("admin.actions.database.import.user_segments"), data: { disable_with: false }

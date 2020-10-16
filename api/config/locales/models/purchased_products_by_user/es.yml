@@ -1,0 +1,15 @@
+---
+es:
+  activerecord:
+    models:
+      purchased_products_by_user:
+        one: Productos comprados por usuario
+        other: Productos comprados por usuario
+    attributes:
+      purchased_products_by_user:
+        user:
+          one: Usuario
+        product:
+          one: Producto
+        created_at: Fecha de creación
+        updated_at: Fecha de edición

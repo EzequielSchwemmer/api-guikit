@@ -1,0 +1,41 @@
+= form_for([namespace, page.resource], html: { class: "form" }) do |f|
+  .discount-form
+    .discount-image
+      .discount-image-input
+        img.discount-image-preview id="preview-image" src=attachment_url_for(page.resource.picture)
+        .help-text = t('.change_image')
+        .icon
+          i.fa.fa-pencil
+        .errors
+          = render "field_errors", field: :base, f: f
+        = f.file_field :picture
+    .discount-fields
+      .discount-field-grid
+        - page.attributes.each do |attribute|
+          = render_field attribute, f: f do
+            = render "field_errors", field: attribute.attribute, f: f
+  hr
+  .discount-relationships
+    .field-unit__relationship
+      = f.label :steps
+      table
+        thead
+          tr
+            th = t('activerecord.attributes.discount_step.position')
+            th = t('activerecord.attributes.discount_step.text')
+            th
+        tbody#steps
+          = f.fields_for :steps do |step|
+            = render 'step_fields', f: step
+      .links.discount-links
+        = link_to_add_association t('activerecord.actions.discount.add_step'), f, :steps, class: 'button', \
+                                    'data-association-insertion-node': '#steps', 'data-association-insertion-method': 'append'
+    .field-unit__relationship
+      = f.label :segments
+      .checkbox-grid
+        = f.collection_check_boxes(:segment_ids, available_segments, :id, :name)
+  hr    
+  .form-actions
+    = f.submit
+= content_for :javascript_includes do
+  = javascript_include_tag "admin/forms/discounts.js"

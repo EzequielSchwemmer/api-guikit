@@ -1,0 +1,39 @@
+header.main-content__header role="banner" 
+  h1#page-title.main-content__page-title
+    = t('activerecord.models.reward.other')
+  = form_tag export_admin_user_points_path(id: user.id) do
+    = submit_tag t('admin.actions.users.points.export'), data: { disable_with: false }
+
+section.main-content__body.main-content__body--flush
+  .points_container
+    .points_table
+      .title = t('activerecord.attributes.user.gained_points')
+      .value.boolean-positive = number_with_delimiter(points[:gained_points])
+      .operator = '-'
+      .space
+      .title = t('activerecord.attributes.user.lost_points')
+      .value.boolean-negative = number_with_delimiter(points[:lost_points])
+      .operator = '-'
+      .space
+      .title = t('activerecord.attributes.user.total_spent_points')
+      .value.boolean-negative = number_with_delimiter(points[:total_spent_points])
+      .result
+      .title = t('activerecord.attributes.user.current_points')
+      .value class="boolean-#{points[:current_points].positive? ? 'positive' : 'negative'}"
+        span = number_with_delimiter(points[:current_points])
+        - if points[:deficit] > 0
+          span = t('activerecord.messages.user.point_deficit', deficit: number_with_delimiter(points[:deficit]))
+  hr
+  table
+    thead
+      tr
+        th = t('activerecord.attributes.reward.created_at')
+        th = t('activerecord.attributes.reward.concept')
+        th = t('activerecord.attributes.reward.points')
+    tbody
+      - resources.each do |reward|
+        tr
+          td = I18n.localize(reward.created_at)
+          td = reward.concept
+          td class="boolean-#{reward.points.positive? ? 'positive' : 'negative'}" = reward.points
+  = paginate resources

@@ -1,0 +1,7 @@
+.field-unit__label
+  = f.label field.attribute
+.field-unit__group
+  .field-unit__field.selectize
+    = f.collection_select field.attribute , field.selection, :id, field.format, {}, multiple: true
+  .field-unit__errors
+    = render "field_errors", field: field.attribute, f: f

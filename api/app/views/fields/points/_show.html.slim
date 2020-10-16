@@ -1,0 +1,6 @@
+div style="display: flex;"
+  span class="boolean-#{field.data.positive? ? 'positive' : 'negative'}"
+    = field
+  = '&nbsp;'.html_safe
+  a href=admin_user_points_path(field.resource.id)
+    = t('admin.actions.users.point_history')

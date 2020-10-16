@@ -1,0 +1,96 @@
+es:
+  admin:
+    helpers:
+      uploaded_tickets:
+        points: En caso de rechazo, estos puntos son considerados como penalización.
+    titles:
+      users:
+        change_password: Cambio de contraseña
+    fields:
+      database:
+        export:
+          options:
+            since: Desde
+            upto: Hasta
+            spacing_rows: Filas de margen
+            spacing_columns: Columnas de margen
+            limit: Límite de registros por tabla
+            offset: Saltear registros de la tabla
+    errors:
+      payment:
+        invalid: No se pudieron exportar los pagos seleccionados
+      database:
+        import:
+          user_segments: Id inválidos
+        export_async:
+          limit_reached: La solicitud no fue realizada porque se llego al límite de %{limit} solicitudes simultáneas.
+    messages:
+      payment:
+        exported: Se han exportado los elementos seleccionados correctamente.
+      database:
+        not_found_users: No se pudieron encontrar %{count} usuarios
+        segments_imported: Se han importado %{count} nuevos segmentos
+        user_segments_imported: Se han asignado los segmentos a los usuarios
+        export_async:
+          in_process: Solicitudes en proceso
+          ready: Solicitudes disponibles
+          none: (No hay solicitueds en esta sección)
+          success: Se ha tomado su solicitud de base de datos y esta siendo procesada.
+        async:
+          download:
+            error: No se pudo descargar la solicitud debido a que el archivo no existe.
+          email:
+            ready: Se procesó su solicitud de base de datos.
+            error: No se pudo procesar su solicitud de base de datos.
+          canceled:
+            notice: Se canceló correctamente la solicitud.
+            error: No se pudo cancelar la solicitud.
+          destroyed:
+            notice: Se borró correctamente el pedido.
+            error: No se pudo eliminar el pedido solicitado.
+    actions:
+      users:
+        point_history: (Ver historial)
+        change_password: Cambiar contraseña
+        points:
+          export: Exportar historial
+        discounts:
+          view: (Ver descuentos asignados)
+          refresh:
+            success: Se actualizaron los segmentos correctamente.
+            error: No se pudieron actualizar los segmentos.
+      database:
+        export: Exportar base de datos
+        async_warning: >-
+          Esta función exporta la base de datos completa, desde su creación.
+          Debido al nivel de procesamiento que require esta funcionalidad,
+          existe un límite de %{limit} procesos simultaneos.
+        async_remove_warning: >-
+          Los backups almacenados tienen una duración máxima de %{days} a %{next_days} días.
+          Tras ese periodo, son eliminados por el sistema. Sin embargo,
+          pueden tener una duración debido a que el sistema decidió liberar espacio en disco.
+        export_async: Exportar BDD de forma asincrónica
+        async_request: Enviar solicitud
+        import:
+          user_segments: Importar Segmentos de Usuarios
+      unsegmented_tickets:
+        assign_segments: Cambiar segmentos
+      payments:
+        export: Exportar pagos seleccionados
+      push_notifications:
+        send: Enviar notificacion Push
+        sent: Se han enviado las notificaciones push correctamente
+        failed: Fallo el envio de las notificaciones push
+      rewards:
+        success: Se creó correctamente la Recompensa
+        failure: Fallo el crearse la recompensa
+        create: Sumar puntos
+      audits:
+        create: Exportar Cambios en BDD
+    views:
+      database:
+        export:
+          select_tables: Seleccione tablas a exportar...
+          options: Configuración
+        import:
+          user_segments: Seleccione el archivo

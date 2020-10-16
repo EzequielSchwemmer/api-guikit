@@ -1,0 +1,66 @@
+es:
+  activerecord:
+    models:
+      permission:
+        one: Permiso
+        other: Permisos
+    attributes:
+      permission:
+        code: Código
+        created_at: Fecha de creación
+        updated_at: Última actualizacion
+      permissions:
+        show_ticket_gallery: Mostrar galería de ticket
+        list_ticket_gallery: Listar galerías de tickets
+        list_admin_users: Listar usuarios
+        create_admin_user: Crear usuario
+        show_admin_user: Ver detalle de usuario
+        update_admin_user: Actualizar usuario
+        destroy_admin_user: Eliminar usuario
+        list_roles: Listar roles
+        create_role: Crear rol
+        show_role: Ver detalle de rol
+        update_role: Actualizar rol
+        destroy_role: Eliminar rol
+        list_users: Listar consumidores
+        create_user: Crear consumidor
+        show_user: Ver detalle de consumidor
+        update_user: Actualizar consumidor
+        destroy_user: Eliminar consumidor
+        list_segments: Listar segmentos
+        show_segment: Ver detalle de segmento
+        create_segment: Crear segmento
+        update_segment: Actualizar segmento
+        destroy_segment: Eliminar segmento
+        list_discounts: Listar descuentos
+        show_discount: Ver detalle de descuento
+        update_discount: Actualizar descuento
+        destroy_discount: Eliminar descuento
+        edit_discount: Editar descuento
+        create_discount: Crear descuento
+        export_database: Exportar base de datos
+        list_uploaded_tickets: Ver lista de revisión rápida
+        list_reviewed_tickets: Ver tickets a digitalizar
+        list_digitalized_tickets: Ver tickets con promociones a validar
+        list_approved_tickets: Ver tickets validados
+        show_uploaded_ticket: Ver formulario de revisión rápida
+        show_reviewed_ticket: Ver formulario de digitalización
+        show_digitalized_ticket: Ver formulario de promociones a validar
+        reject_ticket: Rechazar ticket
+        accept_ticket: Aceptar ticket
+        digitalize_ticket: Digitalizar ticket
+        review_ticket: Revisar promociones de un ticket
+        list_unsegmented_tickets: Ver lista de asignar segmentos
+        show_unsegmented_ticket: Ver detalle de asignar segmento
+        assign_segments_to_ticket: Cambiar segmentos de un consumidor
+        show_ticket_banking_info: Ver pagos pendientes
+        send_push_notifications: Enviar notificaciones Push
+        revert_review: Retornar ticket a revision rápida
+        list_products: Ver lista de productos
+        show_product: Ver detalle de producto
+        update_product: Actualizar producto
+        destroy_product: Eliminar producto
+        edit_product: Editar producto
+        create_product: Crear producto
+        send_custom_rewards: Sumar puntos
+        export_audits: Exportar cambios en BDD

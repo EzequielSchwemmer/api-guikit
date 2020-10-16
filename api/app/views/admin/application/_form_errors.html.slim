@@ -1,0 +1,6 @@
+- if page.resource.errors.any?
+  #error_explanation
+    ul
+      - page.resource.errors.full_messages.each do |message|
+        li.flash-error
+          = message

@@ -1,0 +1,23 @@
+es:
+  activerecord:
+    models:
+      push_notification:
+        one: Notificación Push
+        other: Notificaciones Push
+  activemodel:
+    models:
+      push_notification:
+        one: Notificación Push
+        other: Notificaciones Push
+    attributes:
+      push_notification:
+        users: Destinatarios
+        user_ids: Destinatarios
+        title: Título
+        body: Mensaje
+    errors:
+      models:
+        push_notification:
+          attributes:
+            user_ids:
+              select_user: Debe seleccionar destinatarios

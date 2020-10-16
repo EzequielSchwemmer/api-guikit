@@ -1,0 +1,44 @@
+= form_for 'pending_payments', url: { action: :export, controller: 'admin/pending_payments' }, html: { method: :post } do |f|
+  #notices
+  table#payments aria-labelledby=table_title
+    thead
+      tr
+        - collection_presenter.attribute_types.each do |attr_name, attr_type|
+          th 
+            .cell-label class="cell-label--header cell-label--#{attr_type.html_class} cell-label--#{collection_presenter.ordered_html_class(attr_name)}" scope='col' role='columnmheader' aria-sort=sort_order(collection_presenter.ordered_html_class(attr_name))
+              = link_to sanitized_order_params(page, collection_field_name).merge(collection_presenter.order_params_for(attr_name, key: collection_field_name))
+                = t( \
+                    "activerecord.attributes.#{collection_presenter.resource_name}.#{attr_name}", \
+                    default: attr_name.to_s, \
+                  ).titleize
+                - if collection_presenter.ordered_by?(attr_name)
+                  span class=("cell-label__sort-indicator cell-label__sort-indicator--#{collection_presenter.ordered_html_class(attr_name)}") 
+                    svg aria-hidden="true" 
+                      use xlink:href="#icon-up-caret"
+        th scope="col"
+    tbody
+      - resources.each do |resource|
+        = f.fields_for 'payments[]', resource do |builder|
+          tr class='js-table-row' tabindex='0'
+            tr.js-table-row tabindex="0"
+              td class="cell-data cell-data--user_name"
+                = resource.user_name
+              td class="cell-data cell-data--bank_name"
+                = resource.bank_name
+              td class="cell-data cell-data--cbu"
+                = resource.cbu
+              td class="cell-data cell-data--bank_alias"
+                = resource.bank_alias
+              td class="cell-data cell-data--cuit"
+                = resource.cuit
+              td class="cell-data cell-data--tickets_count"
+                = resource.ticket_count
+              td class="cell-data cell-data--total_refund"
+                = resource.tickets.map(&:refund).reduce(:+).format
+              td class="cell-data cell-data--form_data"
+                = builder.hidden_field :user_id
+                = builder.check_box :export, checked: true
+  .form-actions
+    = f.submit t('admin.actions.payments.export'), disabled: resources.count.zero?
+= content_for :javascript_includes do
+  = javascript_include_tag "admin/forms/payments.js"

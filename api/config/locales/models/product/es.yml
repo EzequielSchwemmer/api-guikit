@@ -1,0 +1,20 @@
+es:
+  activerecord:
+    errors:
+      models:
+        product:
+          attributes:
+            code:
+              invalid_ean13: no es un código EAN13 válido
+    models:
+      product:
+        one: Producto
+        other: Productos
+    attributes:
+      product:
+        name: Nombre
+        code: Código EAN
+        category: Categoria
+        provider: Proveedor
+        created_at: Fecha de creación
+        updated_at: Fecha de actualización

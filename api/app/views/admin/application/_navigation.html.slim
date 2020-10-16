@@ -1,0 +1,6 @@
+nav.navigation role="navigation"
+  h1.navigation__title
+    = "Administrador de tickets - #{content_for(:title)}"
+  .navigation__user_menu
+    span.navigation__text = t('administrate.navigation.messages.hello', name: current_admin_user.name)
+    = link_to t('administrate.actions.sign_out'), destroy_admin_user_session_path, method: :delete, class: "navigation__link"

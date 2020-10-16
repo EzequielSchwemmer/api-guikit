@@ -1,0 +1,3 @@
+es:
+  without_banking_info:
+    blank: 'Por favor registre su información bancaria antes de subir un ticket.'

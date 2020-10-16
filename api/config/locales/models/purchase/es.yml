@@ -1,0 +1,10 @@
+es:
+  activerecord:
+    models:
+      purchase:
+        one: Compra
+        other: Compras
+    attributes:
+      purchase:
+        created_at: Fecha de creación
+        updated_at: Última actualización

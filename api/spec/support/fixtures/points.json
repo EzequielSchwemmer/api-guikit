@@ -1,0 +1,10 @@
+{
+    "data": {
+        "user_id": 1,
+        "attributes": {
+            "current_points": 110,
+            "total_gained_points": 120,
+            "total_spent_points": 10
+        }
+    }
+}

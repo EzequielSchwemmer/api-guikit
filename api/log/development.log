@@ -1,0 +1,664 @@
+  [1m[35m (25.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (25.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (27.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8298008499113206125)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to DeviseTokenAuthCreateUsers (20190408190524)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (34.0ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "provider" character varying DEFAULT 'email' NOT NULL, "uid" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "allow_password_change" boolean DEFAULT FALSE, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying, "last_sign_in_ip" character varying, "confirmation_token" character varying, "confirmed_at" timestamp, "confirmation_sent_at" timestamp, "unconfirmed_email" character varying, "name" character varying NOT NULL, "email" character varying NOT NULL, "birthday" character varying NOT NULL, "tokens" json, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (2.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email" ON "users"  ("email")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_uid_and_provider" ON "users"  ("uid", "provider")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token" ON "users"  ("reset_password_token")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_confirmation_token" ON "users"  ("confirmation_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (2.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190408190524"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RolifyCreateRoles (20190408213741)
+  [1m[35m (6.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (23.6ms)[0m  [1m[35mCREATE TABLE "roles" ("id" bigserial primary key, "name" character varying, "resource_type" character varying, "resource_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE  INDEX  "index_roles_on_resource_type_and_resource_id" ON "roles"  ("resource_type", "resource_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE TABLE "users_roles" ("user_id" bigint, "role_id" bigint)[0m
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE  INDEX  "index_users_roles_on_user_id" ON "users_roles"  ("user_id")[0m
+  [1m[35m (12.0ms)[0m  [1m[35mCREATE  INDEX  "index_users_roles_on_role_id" ON "users_roles"  ("role_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_roles_on_name_and_resource_type_and_resource_id" ON "roles"  ("name", "resource_type", "resource_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_users_roles_on_user_id_and_role_id" ON "users_roles"  ("user_id", "role_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190408213741"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBankingInfos (20190410174042)
+  [1m[35m (11.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.2ms)[0m  [1m[35mCREATE TABLE "banking_infos" ("id" bigserial primary key, "bank_name" character varying NOT NULL, "cbu" character varying, "bank_alias" character varying, "cuit" character varying NOT NULL, "user_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_6f8c1f8918"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_banking_infos_on_user_id" ON "banking_infos"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190410174042"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProducts (20190411201322)
+  [1m[35m (5.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.4ms)[0m  [1m[35mCREATE TABLE "products" ("id" bigserial primary key, "name" character varying NOT NULL, "code" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190411201322"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePurchasedProductsByUsers (20190412182345)
+  [1m[35m (6.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.0ms)[0m  [1m[35mCREATE TABLE "purchased_products_by_users" ("id" bigserial primary key, "user_id" bigint NOT NULL, "product_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_18b27ee8d5"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_9612455451"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  [1m[35m (5.1ms)[0m  [1m[35mCREATE  INDEX  "index_purchased_products_by_users_on_user_id" ON "purchased_products_by_users"  ("user_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_purchased_products_by_users_on_product_id" ON "purchased_products_by_users"  ("product_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190412182345"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeviseUserSecurityRequirements (20190412202111)
+  [1m[35m (6.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.0ms)[0m  [1m[35mALTER TABLE "users" ADD "failed_attempts" integer DEFAULT 0 NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "unlock_token" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "users" ADD "locked_at" timestamp[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190412202111"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateOldPasswords (20190412203622)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE TABLE "old_passwords" ("id" bigserial primary key, "encrypted_password" character varying NOT NULL, "password_archivable_type" character varying NOT NULL, "password_archivable_id" integer NOT NULL, "password_salt" character varying, "created_at" timestamp)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE  INDEX  "index_password_archivable" ON "old_passwords"  ("password_archivable_type", "password_archivable_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190412203622"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeBirthdayColumnInUsersToDate (20190416173152)
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.9ms)[0m  [1m[35mALTER TABLE "users" ALTER COLUMN "birthday" TYPE date USING CAST(birthday AS date)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190416173152"]]
+  [1m[35m (2.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDailyPoints (20190430172217)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "daily_points" ("id" bigserial primary key, "points" integer, "date" date, "user_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_230fb94dcb"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (6.2ms)[0m  [1m[35mCREATE  INDEX  "index_daily_points_on_user_id" ON "daily_points"  ("user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430172217"]]
+  [1m[35m (10.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRetailers (20190430172521)
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.1ms)[0m  [1m[35mCREATE TABLE "retailers" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430172521"]]
+  [1m[35m (3.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRetailerToProducts (20190430172805)
+  [1m[35m (11.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "products" ADD "retailer_id" bigint[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_retailer_id" ON "products"  ("retailer_id")[0m
+  [1m[35m (7.6ms)[0m  [1m[35mALTER TABLE "products" ADD CONSTRAINT "fk_rails_26aedc5028"
+FOREIGN KEY ("retailer_id")
+  REFERENCES "retailers" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430172805"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTickets (20190430172946)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.1ms)[0m  [1m[35mCREATE TABLE "tickets" ("id" bigserial primary key, "status" integer, "image" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430172946"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRewards (20190430173030)
+  [1m[35m (11.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (13.9ms)[0m  [1m[35mCREATE TABLE "rewards" ("id" bigserial primary key, "user_id" bigint, "ticket_id" bigint, "points" integer, "concept" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_eda16f8f02"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_7268fe4cf2"
+FOREIGN KEY ("ticket_id")
+  REFERENCES "tickets" ("id")
+)[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_rewards_on_user_id" ON "rewards"  ("user_id")[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE  INDEX  "index_rewards_on_ticket_id" ON "rewards"  ("ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430173030"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePurchases (20190430174416)
+  [1m[35m (5.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.5ms)[0m  [1m[35mCREATE TABLE "purchases" ("id" bigserial primary key, "ticket_id" bigint, "product_id" bigint, "amount" integer, "total_retail_price" bigint, "total_discount_price" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_6fb46799ea"
+FOREIGN KEY ("ticket_id")
+  REFERENCES "tickets" ("id")
+, CONSTRAINT "fk_rails_0d630f0bc7"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+)[0m
+  [1m[35m (32.3ms)[0m  [1m[35mCREATE  INDEX  "index_purchases_on_ticket_id" ON "purchases"  ("ticket_id")[0m
+  [1m[35m (12.6ms)[0m  [1m[35mCREATE  INDEX  "index_purchases_on_product_id" ON "purchases"  ("product_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430174416"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDiscounts (20190430174637)
+  [1m[35m (10.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE TABLE "discounts" ("id" bigserial primary key, "cost" bigint, "title" character varying, "description" character varying, "image" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430174637"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserDiscounts (20190430174737)
+  [1m[35m (5.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.6ms)[0m  [1m[35mCREATE TABLE "user_discounts" ("id" bigserial primary key, "user_id" bigint, "discount_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_82f6fe28bf"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_f6ebb9865a"
+FOREIGN KEY ("discount_id")
+  REFERENCES "discounts" ("id")
+)[0m
+  [1m[35m (7.4ms)[0m  [1m[35mCREATE  INDEX  "index_user_discounts_on_user_id" ON "user_discounts"  ("user_id")[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE  INDEX  "index_user_discounts_on_discount_id" ON "user_discounts"  ("discount_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430174737"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateProductDiscounts (20190430174806)
+  [1m[35m (5.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (11.4ms)[0m  [1m[35mCREATE TABLE "product_discounts" ("id" bigserial primary key, "product_id" bigint, "discount_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_bd840c8d3f"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+, CONSTRAINT "fk_rails_9547908de7"
+FOREIGN KEY ("discount_id")
+  REFERENCES "discounts" ("id")
+)[0m
+  [1m[35m (11.5ms)[0m  [1m[35mCREATE  INDEX  "index_product_discounts_on_product_id" ON "product_discounts"  ("product_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_product_discounts_on_discount_id" ON "product_discounts"  ("discount_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430174806"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTicketDiscounts (20190430174838)
+  [1m[35m (5.9ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "ticket_discounts" ("id" bigserial primary key, "ticket_id" bigint, "discount_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_77e5b92539"
+FOREIGN KEY ("ticket_id")
+  REFERENCES "tickets" ("id")
+, CONSTRAINT "fk_rails_a865bbccfd"
+FOREIGN KEY ("discount_id")
+  REFERENCES "discounts" ("id")
+)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE  INDEX  "index_ticket_discounts_on_ticket_id" ON "ticket_discounts"  ("ticket_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_ticket_discounts_on_discount_id" ON "ticket_discounts"  ("discount_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430174838"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DropPurchasedProductsByUser (20190430175257)
+  [1m[35m (11.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (18.3ms)[0m  [1m[35mDROP TABLE "purchased_products_by_users"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190430175257"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateActiveStorageTables (20190502131244)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.7ms)[0m  [1m[35mCREATE TABLE "active_storage_blobs" ("id" bigserial primary key, "key" character varying NOT NULL, "filename" character varying NOT NULL, "content_type" character varying, "metadata" text, "byte_size" bigint NOT NULL, "checksum" character varying NOT NULL, "created_at" timestamp NOT NULL)[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key" ON "active_storage_blobs"  ("key")[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "active_storage_attachments" ("id" bigserial primary key, "name" character varying NOT NULL, "record_type" character varying NOT NULL, "record_id" bigint NOT NULL, "blob_id" bigint NOT NULL, "created_at" timestamp NOT NULL, CONSTRAINT "fk_rails_c3b3935057"
+FOREIGN KEY ("blob_id")
+  REFERENCES "active_storage_blobs" ("id")
+)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_active_storage_attachments_on_blob_id" ON "active_storage_attachments"  ("blob_id")[0m
+  [1m[35m (2.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190502131244"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveImageFromTickets (20190502132104)
+  [1m[35m (17.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tickets" DROP COLUMN "image"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190502132104"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveImageFromDiscounts (20190502132128)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "discounts" DROP COLUMN "image"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190502132128"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to DeviseCreateAdminUsers (20190502142335)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (16.1ms)[0m  [1m[35mCREATE TABLE "admin_users" ("id" bigserial primary key, "email" character varying DEFAULT '' NOT NULL, "encrypted_password" character varying DEFAULT '' NOT NULL, "name" character varying NOT NULL, "birthday" character varying NOT NULL, "role_id" bigint, "reset_password_token" character varying, "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "failed_attempts" integer DEFAULT 0 NOT NULL, "unlock_token" character varying, "locked_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_4b5794da69"
+FOREIGN KEY ("role_id")
+  REFERENCES "roles" ("id")
+)[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE  INDEX  "index_admin_users_on_role_id" ON "admin_users"  ("role_id")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_email" ON "admin_users"  ("email")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token" ON "admin_users"  ("reset_password_token")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_unlock_token" ON "admin_users"  ("unlock_token")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190502142335"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveRollifyRoles (20190502143541)
+  [1m[35m (6.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mDROP TABLE "users_roles"[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "roles" DROP COLUMN "resource_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190502143541"]]
+  [1m[35m (12.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePermissions (20190502144501)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.8ms)[0m  [1m[35mCREATE TABLE "permissions" ("id" bigserial primary key, "code" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190502144501"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateRolePermissions (20190502144703)
+  [1m[35m (11.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.1ms)[0m  [1m[35mCREATE TABLE "role_permissions" ("id" bigserial primary key, "role_id" bigint, "permission_id" bigint, CONSTRAINT "fk_rails_60126080bd"
+FOREIGN KEY ("role_id")
+  REFERENCES "roles" ("id")
+, CONSTRAINT "fk_rails_439e640a3f"
+FOREIGN KEY ("permission_id")
+  REFERENCES "permissions" ("id")
+)[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE  INDEX  "index_role_permissions_on_role_id" ON "role_permissions"  ("role_id")[0m
+  [1m[35m (11.9ms)[0m  [1m[35mCREATE  INDEX  "index_role_permissions_on_permission_id" ON "role_permissions"  ("permission_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190502144703"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateBranches (20190507134709)
+  [1m[35m (6.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.3ms)[0m  [1m[35mCREATE TABLE "branches" ("id" bigserial primary key, "name" character varying NOT NULL, "retailer_id" bigint NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_branches_on_retailer_id" ON "branches"  ("retailer_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190507134709"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddExtraFieldsToTickets (20190507134710)
+  [1m[35m (11.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD "retailer_id" bigint DEFAULT NULL[0m
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_retailer_id" ON "tickets"  ("retailer_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD "branch_id" bigint DEFAULT NULL[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_branch_id" ON "tickets"  ("branch_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tickets" ADD "ticket_code" character varying DEFAULT NULL[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tickets" ADD "total_cents" integer DEFAULT 0 NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tickets" ADD "total_currency" character varying DEFAULT 'ARS' NOT NULL[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD "emitted_at" timestamp DEFAULT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190507134710"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveRetailerInProducts (20190507161105)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "products" DROP COLUMN "retailer_id"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190507161105"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUserIdToTickets (20190508155946)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tickets" ADD "user_id" bigint NOT NULL[0m
+  [1m[35m (6.8ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_user_id" ON "tickets"  ("user_id")[0m
+  [1m[35m (1.5ms)[0m  [1m[35mALTER TABLE "tickets" ADD CONSTRAINT "fk_rails_538a036fb9"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190508155946"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDailyTicketCounterToTickets (20190510185504)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tickets" ADD "daily_counter" integer DEFAULT 1 NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20190510185504"]]
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeTicketStatusToInteger (21090510185507)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tickets" DROP COLUMN "status"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD "status" integer DEFAULT 0 NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185507"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReviewersToTickets (21090510185508)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tickets" ADD "quick_reviewer_id" bigint[0m
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_quick_reviewer_id" ON "tickets"  ("quick_reviewer_id")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tickets" ADD "digitalizer_id" bigint[0m
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_digitalizer_id" ON "tickets"  ("digitalizer_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD "reviewer_id" bigint[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_reviewer_id" ON "tickets"  ("reviewer_id")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD "exporter_id" bigint[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_exporter_id" ON "tickets"  ("exporter_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185508"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddTimesToTickets (21090510185510)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tickets" ADD "quick_reviewed_at" timestamp[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD "digitalized_at" timestamp[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "tickets" ADD "reviewed_at" timestamp[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "tickets" ADD "exported_at" timestamp[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185510"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateTicketLines (21090510185511)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (21.4ms)[0m  [1m[35mCREATE TABLE "ticket_lines" ("id" bigserial primary key, "product_id" bigint NOT NULL, "ticket_id" bigint NOT NULL, "amount" integer, "price_cents" integer DEFAULT 0 NOT NULL, "price_currency" character varying DEFAULT 'ARS' NOT NULL, "discount_price_cents" integer DEFAULT 0 NOT NULL, "discount_price_currency" character varying DEFAULT 'ARS' NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_9dbf8e529d"
+FOREIGN KEY ("product_id")
+  REFERENCES "products" ("id")
+, CONSTRAINT "fk_rails_292cce3908"
+FOREIGN KEY ("ticket_id")
+  REFERENCES "tickets" ("id")
+)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_ticket_lines_on_product_id" ON "ticket_lines"  ("product_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_ticket_lines_on_ticket_id" ON "ticket_lines"  ("ticket_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185511"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFirstTicketToTickets (21090510185512)
+  [1m[35m (6.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "tickets" ADD "first_ticket" boolean DEFAULT FALSE NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185512"]]
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSegments (21090510185515)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.3ms)[0m  [1m[35mCREATE TABLE "segments" ("id" bigserial primary key, "name" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185515"]]
+  [1m[35m (10.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateUserSegments (21090510185516)
+  [1m[35m (6.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (9.3ms)[0m  [1m[35mCREATE TABLE "user_segments" ("id" bigserial primary key, "user_id" bigint NOT NULL, "segment_id" bigint NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_dcb1caa35e"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+, CONSTRAINT "fk_rails_e0e9d85da1"
+FOREIGN KEY ("segment_id")
+  REFERENCES "segments" ("id")
+)[0m
+  [1m[35m (32.8ms)[0m  [1m[35mCREATE  INDEX  "index_user_segments_on_user_id" ON "user_segments"  ("user_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_user_segments_on_segment_id" ON "user_segments"  ("segment_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185516"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeDiscountFields (21090510185517)
+  [1m[35m (5.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "discounts" ADD "discount_type" character varying DEFAULT '' NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "discounts" ADD "terms_and_conditions_url" character varying NOT NULL[0m
+  [1m[35m (7.0ms)[0m  [1m[35mALTER TABLE "discounts" ADD "starts_at" date DEFAULT '2020-08-14' NOT NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "discounts" ADD "ends_at" date DEFAULT '2020-09-14' NOT NULL[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "discounts" ADD "active" boolean DEFAULT TRUE NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185517"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDiscountSegments (21090510185518)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (8.7ms)[0m  [1m[35mCREATE TABLE "discount_segments" ("id" bigserial primary key, "discount_id" bigint, "segment_id" bigint, CONSTRAINT "fk_rails_9402f705be"
+FOREIGN KEY ("discount_id")
+  REFERENCES "discounts" ("id")
+, CONSTRAINT "fk_rails_9019c4304d"
+FOREIGN KEY ("segment_id")
+  REFERENCES "segments" ("id")
+)[0m
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE  INDEX  "index_discount_segments_on_discount_id" ON "discount_segments"  ("discount_id")[0m
+  [1m[35m (1.6ms)[0m  [1m[35mCREATE  INDEX  "index_discount_segments_on_segment_id" ON "discount_segments"  ("segment_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185518"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDiscountSteps (21090510185519)
+  [1m[35m (6.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.1ms)[0m  [1m[35mCREATE TABLE "discount_steps" ("id" bigserial primary key, "discount_id" bigint, "position" integer, "text" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_70d38e28e8"
+FOREIGN KEY ("discount_id")
+  REFERENCES "discounts" ("id")
+)[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_discount_steps_on_discount_id" ON "discount_steps"  ("discount_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_discount_steps_on_discount_id_and_position" ON "discount_steps"  ("discount_id", "position")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185519"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveProductNameColumn (21090510185520)
+  [1m[35m (5.7ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "products" DROP COLUMN "name"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185520"]]
+  [1m[35m (12.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddFeaturedToDiscounts (21090510185521)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "discounts" ADD "featured" boolean DEFAULT FALSE NOT NULL[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "discounts" ADD "terms_and_conditions" text DEFAULT '' NOT NULL[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "discounts" DROP COLUMN "terms_and_conditions_url"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185521"]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddTicketFraudChecks (21090510185522)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "anti_fraud_ticket_protection" ON "tickets"  ("ticket_code", "emitted_at", "retailer_id", "branch_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185522"]]
+  [1m[35m (5.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeBirthdayToDateInUsers (21090510185523)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ALTER COLUMN "birthday" TYPE date USING birthday::date[0m
+  [1m[35m (28.1ms)[0m  [1m[35mALTER TABLE "admin_users" ALTER COLUMN "birthday" TYPE date USING birthday::date[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185523"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddMissingTimestamps (21090510185524)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "branches" ADD "created_at" timestamp[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "branches" ADD "updated_at" timestamp[0m
+  [1m[35m (0.9ms)[0m  [1m[35mALTER TABLE "discount_segments" ADD "created_at" timestamp[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "discount_segments" ADD "updated_at" timestamp[0m
+  [1m[35m (1.2ms)[0m  [1m[35mALTER TABLE "role_permissions" ADD "created_at" timestamp[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "role_permissions" ADD "updated_at" timestamp[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185524"]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddActiveToTicketDiscounts (21090510185525)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "ticket_discounts" ADD "active" boolean DEFAULT TRUE NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185525"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRefundToTickets (21090510185526)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tickets" ADD "refund_cents" integer DEFAULT 0 NOT NULL[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "tickets" ADD "refund_currency" character varying DEFAULT 'ARS' NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185526"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddOwnTicketToTickets (21090510185527)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tickets" ADD "own_ticket" boolean DEFAULT FALSE[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185527"]]
+  [1m[35m (11.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeletedAtToModels (21090510185528)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "admin_users" ADD "deleted_at" timestamp[0m
+  [1m[35m (6.5ms)[0m  [1m[35mCREATE  INDEX  "index_admin_users_on_deleted_at" ON "admin_users"  ("deleted_at")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "banking_infos" ADD "deleted_at" timestamp[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE  INDEX  "index_banking_infos_on_deleted_at" ON "banking_infos"  ("deleted_at")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "branches" ADD "deleted_at" timestamp[0m
+  [1m[35m (4.7ms)[0m  [1m[35mCREATE  INDEX  "index_branches_on_deleted_at" ON "branches"  ("deleted_at")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "daily_points" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_daily_points_on_deleted_at" ON "daily_points"  ("deleted_at")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "discount_segments" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "index_discount_segments_on_deleted_at" ON "discount_segments"  ("deleted_at")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "discount_steps" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_discount_steps_on_deleted_at" ON "discount_steps"  ("deleted_at")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "discounts" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_discounts_on_deleted_at" ON "discounts"  ("deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "permissions" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_permissions_on_deleted_at" ON "permissions"  ("deleted_at")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "products" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_products_on_deleted_at" ON "products"  ("deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "purchases" ADD "deleted_at" timestamp[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_purchases_on_deleted_at" ON "purchases"  ("deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "retailers" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_retailers_on_deleted_at" ON "retailers"  ("deleted_at")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "rewards" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.7ms)[0m  [1m[35mCREATE  INDEX  "index_rewards_on_deleted_at" ON "rewards"  ("deleted_at")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "roles" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_roles_on_deleted_at" ON "roles"  ("deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "segments" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_segments_on_deleted_at" ON "segments"  ("deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "ticket_discounts" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE  INDEX  "index_ticket_discounts_on_deleted_at" ON "ticket_discounts"  ("deleted_at")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "ticket_lines" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_ticket_lines_on_deleted_at" ON "ticket_lines"  ("deleted_at")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mALTER TABLE "tickets" ADD "deleted_at" timestamp[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_deleted_at" ON "tickets"  ("deleted_at")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "user_discounts" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_user_discounts_on_deleted_at" ON "user_discounts"  ("deleted_at")[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "user_segments" ADD "deleted_at" timestamp[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE  INDEX  "index_user_segments_on_deleted_at" ON "user_segments"  ("deleted_at")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ADD "deleted_at" timestamp[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE  INDEX  "index_users_on_deleted_at" ON "users"  ("deleted_at")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185528"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddSegmentsChangerToTickets (21090510185529)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tickets" ADD "segments_chooser_id" bigint[0m
+  [1m[35m (7.3ms)[0m  [1m[35mCREATE  INDEX  "index_tickets_on_segments_chooser_id" ON "tickets"  ("segments_chooser_id")[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "tickets" ADD "segments_chosen_at" timestamp[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185529"]]
+  [1m[35m (15.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddGenderToUsers (21090510185530)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "users" ADD "gender" integer DEFAULT 0 NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185530"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePendingPayments (21090510185531)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (49.5ms)[0m  [1m[35mCREATE VIEW "pending_payments" AS SELECT
+  MAX(id) as id,
+  user_id,
+  NULL as deleted_at
+FROM tickets
+WHERE tickets.status = 3 /* approved */
+GROUP BY tickets.user_id
+;[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185531"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddHolderFieldsToBankingInfos (21090510185532)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "banking_infos" ADD "holder" boolean DEFAULT TRUE NOT NULL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "banking_infos" ADD "holder_name" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185532"]]
+  [1m[35m (11.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddIndexToSegments (21090510185533)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_segments_on_name" ON "segments"  ("name")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185533"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDevices (21090510185534)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.8ms)[0m  [1m[35mCREATE TABLE "devices" ("id" bigserial primary key, "user_id" bigint NOT NULL, "token" character varying NOT NULL, "arn" character varying, "deleted_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_410b63ef65"
+FOREIGN KEY ("user_id")
+  REFERENCES "users" ("id")
+)[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE  INDEX  "index_devices_on_user_id" ON "devices"  ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_devices_on_deleted_at" ON "devices"  ("deleted_at")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185534"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddProductDescriptionToDiscounts (21090510185535)
+  [1m[35m (6.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "discounts" ADD "product_description" character varying DEFAULT 'Product Description' NOT NULL[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185535"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to InstallAudited (21090510185536)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "audits"[0m
+  [1m[35m (26.5ms)[0m  [1m[35mCREATE TABLE "audits" ("id" bigserial primary key, "auditable_id" integer, "auditable_type" character varying, "associated_id" integer, "associated_type" character varying, "user_id" integer, "user_type" character varying, "username" character varying, "action" character varying, "audited_changes" jsonb, "version" integer DEFAULT 0, "comment" character varying, "remote_address" character varying, "request_uuid" character varying, "created_at" timestamp)[0m
+  [1m[35m (13.0ms)[0m  [1m[35mCREATE  INDEX  "auditable_index" ON "audits"  ("auditable_type", "auditable_id", "version")[0m
+  [1m[35m (1.9ms)[0m  [1m[35mCREATE  INDEX  "associated_index" ON "audits"  ("associated_type", "associated_id")[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE  INDEX  "user_index" ON "audits"  ("user_id", "user_type")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_audits_on_request_uuid" ON "audits"  ("request_uuid")[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE  INDEX  "index_audits_on_created_at" ON "audits"  ("created_at")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185536"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeDevices (21090510185537)
+  [1m[35m (12.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "devices" RENAME COLUMN "arn" TO "endpoint_arn"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "devices" ADD "subscription_arn" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185537"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to UpdatePendingPaymentsToVersion2 (21090510185538)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mDROP VIEW "pending_payments";[0m
+  [1m[35m (30.1ms)[0m  [1m[35mCREATE VIEW "pending_payments" AS SELECT 
+  MAX(tickets.id) as id,
+  tickets.user_id,
+  users.deleted_at 
+FROM tickets 
+INNER JOIN users ON tickets.user_id=users.id 
+WHERE tickets.status = 3 AND users.deleted_at IS NULL 
+GROUP BY tickets.user_id, users.deleted_at
+;[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185538"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RemoveUniqueIndexInDiscounts (21090510185539)
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_discount_steps_on_discount_id_and_position"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185539"]]
+  [1m[35m (5.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddLastNameAndDniToUsers (21090510185540)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "users" ADD "dni" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185540"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReasonMessageToTicket (21090510185542)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tickets" ADD "reason_message" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185542"]]
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttributesToProducts (21090510185543)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "products" ADD "name" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "products" ADD "category" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "products" ADD "provider" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185543"]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to ChangeSubscriptionArnFromStringToArrayInDevices (21090510185544)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (27.5ms)[0m  [1m[35mALTER TABLE "devices" ALTER COLUMN "subscription_arn" TYPE character varying[] USING (string_to_array(subscription_arn, ',')), ALTER COLUMN "subscription_arn" SET DEFAULT '{}'[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185544"]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeletedAtToOldPasswords (21090510185545)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "old_passwords" ADD "deleted_at" timestamp[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185545"]]
+  [1m[35m (10.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDeletedAtIndexes (21090510185546)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "active_storage_attachments" ADD "deleted_at" timestamp[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_active_storage_attachments_uniqueness"[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_attachments_uniqueness" ON "active_storage_attachments"  ("record_type", "record_id", "name", "blob_id", "deleted_at")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "active_storage_blobs" ADD "deleted_at" timestamp[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_active_storage_blobs_on_key"[0m
+  [1m[35m (11.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_active_storage_blobs_on_key_and_deleted_at" ON "active_storage_blobs"  ("key", "deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_admin_users_on_email"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_email_and_deleted_at" ON "admin_users"  ("email", "deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_admin_users_on_reset_password_token"[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_reset_password_token_and_deleted_at" ON "admin_users"  ("reset_password_token", "deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_admin_users_on_unlock_token"[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_admin_users_on_unlock_token_and_deleted_at" ON "admin_users"  ("unlock_token", "deleted_at")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mDROP INDEX  "index_users_on_confirmation_token"[0m
+  [1m[35m (1.8ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_confirmation_token_and_deleted_at" ON "users"  ("confirmation_token", "deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_users_on_email"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_email_and_deleted_at" ON "users"  ("email", "deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_users_on_reset_password_token"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_reset_password_token_and_deleted_at" ON "users"  ("reset_password_token", "deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_users_on_uid_and_provider"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_uid_and_provider_and_deleted_at" ON "users"  ("uid", "provider", "deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_banking_infos_on_user_id"[0m
+  [1m[35m (1.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_banking_infos_on_user_id_and_deleted_at" ON "banking_infos"  ("user_id", "deleted_at")[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP INDEX  "index_segments_on_name"[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_segments_on_name_and_deleted_at" ON "segments"  ("name", "deleted_at")[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP INDEX  "anti_fraud_ticket_protection"[0m
+  [1m[35m (1.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "anti_fraud_ticket_protection" ON "tickets"  ("ticket_code", "emitted_at", "retailer_id", "branch_id", "deleted_at")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185546"]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddCostToTicketDiscounts (21090510185547)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "ticket_discounts" ADD "original_cost" bigint[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185547"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePushNotificationLogs (21090510185548)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (20.0ms)[0m  [1m[35mCREATE TABLE "push_notification_logs" ("id" bigserial primary key, "title" character varying, "body" text, "type" character varying, "origin" character varying, "target_topic" character varying, "sender_id" bigint, "recipient_id" bigint, "deleted_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (6.1ms)[0m  [1m[35mCREATE  INDEX  "index_push_notification_logs_on_sender_id" ON "push_notification_logs"  ("sender_id")[0m
+  [1m[35m (1.1ms)[0m  [1m[35mCREATE  INDEX  "index_push_notification_logs_on_recipient_id" ON "push_notification_logs"  ("recipient_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185548"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to RenameNotificationType (21090510185549)
+  [1m[35m (12.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.7ms)[0m  [1m[35mALTER TABLE "push_notification_logs" RENAME COLUMN "type" TO "notification_type"[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185549"]]
+  [1m[35m (5.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAuthorToReward (21090510185550)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "rewards" ADD "author_id" bigint[0m
+  [1m[35m (13.2ms)[0m  [1m[35mCREATE  INDEX  "index_rewards_on_author_id" ON "rewards"  ("author_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185550"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRejectReasonsToTicketDiscount (21090510185551)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.8ms)[0m  [1m[35mALTER TABLE "ticket_discounts" ADD "reject_reason" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185551"]]
+  [1m[35m (7.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAsyncExports (21090510185552)
+  [1m[35m (1.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (47.6ms)[0m  [1m[35mCREATE TABLE "async_exports" ("id" bigserial primary key, "admin_user_id" bigint NOT NULL, "status" integer DEFAULT 0, "job_id" integer, "filename" character varying, "error" character varying, "deleted_at" timestamp, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, CONSTRAINT "fk_rails_19aead500f"
+FOREIGN KEY ("admin_user_id")
+  REFERENCES "admin_users" ("id")
+)[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_async_exports_on_admin_user_id" ON "async_exports"  ("admin_user_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "21090510185552"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2020-10-14 18:06:39.628849"], ["updated_at", "2020-10-14 18:06:39.628849"]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8298008499113206125)[0m
+  [1m[35m (12.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.4ms)[0m  [1m[34m            SELECT
+              c.relname as viewname,
+              pg_get_viewdef(c.oid) AS definition,
+              c.relkind AS kind,
+              n.nspname AS namespace
+            FROM pg_class c
+              LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+            WHERE
+              c.relkind IN ('m', 'v')
+              AND c.relname NOT IN (SELECT extname FROM pg_extension)
+              AND n.nspname = ANY (current_schemas(false))
+            ORDER BY c.oid
+[0m
+Started GET "/" for ::1 at 2020-10-14 18:07:13 -0300
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Library/Ruby/Gems/2.6.0/gems/railties-5.2.4.4/lib/rails/templates/rails/welcome/index.html.erb (10.4ms)
+Completed 200 OK in 70ms (Views: 28.9ms | ActiveRecord: 0.0ms)
+
+

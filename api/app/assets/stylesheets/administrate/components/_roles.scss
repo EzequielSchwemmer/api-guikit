@@ -1,0 +1,40 @@
+.role-permissions {
+  display: grid;
+  grid-template-areas: '. . . big' 'seg disc med big' 'seg disc small big' 'sec reward push big';
+  gap: 24px;
+  margin: 16px;
+}
+
+.role-permissions__fields {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+
+.role-permissions__segment {
+  grid-area: seg;
+}
+
+.role-permissions__discount {
+  grid-area: disc;
+}
+
+.role-permissions__database {
+  grid-area: small;
+}
+
+.role-permissions__ticket {
+  grid-area: big;
+}
+
+.role-permissions__segment_review {
+  grid-area: med;
+}
+
+.role-permissions__push_notification {
+  grid-area: push;
+}
+
+.role-permissions__reward {
+  grid-area: reward;
+}

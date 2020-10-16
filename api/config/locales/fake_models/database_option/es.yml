@@ -1,0 +1,20 @@
+es:
+  activemodel:
+    errors:
+      models:
+        options:
+          attributes:
+            since:
+              before_today: debe ser igual o anterior a hoy
+              before_upto: debe ser anterior a la fecha de fin
+            upto:
+              before_today: debe ser anterior o igual a hoy
+              after_since: debe ser posterior a la fecha de inicio
+        audit:
+          attributes:
+            since:
+              before_today: debe ser igual o anterior a hoy
+              before_upto: debe ser anterior a la fecha de fin
+            upto:
+              before_today: debe ser anterior o igual a hoy
+              after_since: debe ser posterior a la fecha de inicio

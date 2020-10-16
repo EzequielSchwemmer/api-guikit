@@ -1,0 +1,3 @@
+es:
+  any_presence:
+    blank: "Siquiera uno de los siguientes campos no puede estar vacio : "

@@ -1,0 +1,15 @@
+---
+en:
+  activerecord:
+    models:
+      banking_info:
+        one: Banking info
+        other: Banking info
+    attributes:
+      banking_info:
+        bank_name: Entity
+        bank_alias: Alias
+        user:
+          one: Consumidor
+        created_at: Fecha de creación
+        updated_at: Fecha de edición

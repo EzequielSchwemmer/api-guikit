@@ -1,0 +1,14 @@
+es:
+  activerecord:
+    models:
+      segment:
+        one: Segmento
+        other: Segmentos
+    formats:
+      segment:
+        selection: "%{id} - %{name}"
+    attributes:
+      segment:
+        name: Nombre
+        created_at: Fecha de creación
+        updated_at: Última actualización

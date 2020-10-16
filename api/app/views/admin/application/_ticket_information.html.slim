@@ -1,0 +1,46 @@
+dl.attribute-set
+  - page.attributes.each do |attribute|
+    dt.attribute-label id=attribute.name
+      = t("activerecord.attributes.#{resource_name}.#{attribute.name}", default: attribute.name.titleize)
+    dd class="attribute-data attribute-data--#{attribute.html_class}"
+      = render_field attribute, page: page
+hr
+h3 = t("activerecord.attributes.#{resource_name}.ticket_lines")
+table
+  thead
+    tr
+      th = t('activerecord.attributes.ticket_line.product')
+      th = t('activerecord.attributes.ticket_line.amount')
+      th = t('activerecord.attributes.ticket_line.price')
+      th = t('activerecord.attributes.ticket_line.discount_price')
+  tbody
+    - page.resource.ticket_lines.each do |line|
+      tr
+        td data-target=line.product.code data-toggle="modal" = line.product.code
+        td data-target=line.product.code data-toggle="modal" = line.amount
+        td data-target=line.product.code data-toggle="modal" = line.price.format
+        td data-target=line.product.code data-toggle="modal" = line.discount_price.format
+        .content-modal id=line.product.code
+          .modal-window
+            span.close data-dismiss="modal"  &times;
+            h3.product-modal-title = "Producto " + line.product.code
+            hr
+            p 
+              span 
+                b Código: 
+              span = line.product.code
+            p 
+              span 
+                b Nombre: 
+              span = line.product.name
+            p 
+              span 
+                b Categoría: 
+              span = line.product.category
+            p 
+              span 
+                b Proveedor: 
+              span = line.product.provider
+
+= content_for :javascript_includes do
+  = javascript_include_tag "admin/forms/modal.js"

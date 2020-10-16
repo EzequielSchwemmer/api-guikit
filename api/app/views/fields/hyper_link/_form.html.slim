@@ -1,0 +1,7 @@
+.field-unit__label
+  = f.label field.attribute
+.field-unit__group
+  .field-unit__field
+    = f.url_field field.attribute
+  .field-unit__errors
+    = render "field_errors", field: field.attribute, f: f

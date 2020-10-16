@@ -1,0 +1,15 @@
+:queues:
+  - default
+  - mailers
+
+:schedule:
+  SetUsersDiscountsWorker:
+    cron: '0 0 0 * * *' # Runs everyday at midnight
+  SendAllTopicsPushNotificationWorker:
+    cron: '0 0 10 * * *' # Runs everyday at 10:00AM
+  SendInactiveUserPushNotificationWorker:
+    cron: '0 0 9 * * 1' # Runs every monday at 9:00AM
+  CleanDatabaseWorker:
+    cron: '30 1 1,15 * *'
+  RemoveOldDatabaseBackup:
+    cron: '0 0 0 * * *' # Runs everyday at midnight

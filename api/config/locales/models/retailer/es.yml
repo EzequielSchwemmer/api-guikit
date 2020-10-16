@@ -1,0 +1,12 @@
+es:
+  activerecord:
+    models:
+      retailer:
+        one: Retailer
+        other: Retailers
+    attributes:
+      retailer:
+        name: Nombre
+        created_at: Fecha de creación
+        updated_at: Última actualizacion
+        

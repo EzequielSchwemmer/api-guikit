@@ -1,0 +1,13 @@
+es:
+  activerecord:
+    models:
+      discount_step:
+        one: Paso de descuento
+        other: Pasos de descuento
+    attributes:
+      discount_step:
+        position: Orden
+        discount: Descuento
+        text: Descripción
+        created_at: Fecha de creación
+        updated_at: Última actualizacion

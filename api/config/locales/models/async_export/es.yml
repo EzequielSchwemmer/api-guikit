@@ -1,0 +1,14 @@
+es:
+  activerecord:
+    models:
+      async_export:
+        one: Solicitud de exportar BDD
+        other: Solicitudes de exportar BDD
+    attributes:
+      async_export:
+        created_at: Fecha de solicitud
+        admin_user: Solicitado por
+        actions: Acciones
+        cancel: Cancelar
+        download: Descargar
+        destroy: Eliminar

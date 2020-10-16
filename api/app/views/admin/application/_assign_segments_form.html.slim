@@ -1,0 +1,8 @@
+= form_for page.resource.user, url: { action: :assign_segments }, method: :post do |f|
+  .field-unit__relationship
+    = f.label :segments
+    .checkbox-grid
+      = f.collection_check_boxes(:segment_ids, available_segments, :id, :name)
+  hr
+  .form-actions
+    = f.submit t('admin.actions.unsegmented_tickets.assign_segments')

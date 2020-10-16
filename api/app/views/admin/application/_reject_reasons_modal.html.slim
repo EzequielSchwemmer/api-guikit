@@ -1,0 +1,9 @@
+.reject-reason_link
+  a.link  href="#" data-target="reject-reason-#{td.object.id}" data-toggle="modal" = "(#{t('activerecord.actions.ticket_discount.reject_reason')})"
+
+.content-modal id="reject-reason-#{td.object.id}"
+  .modal-window
+    span.close data-dismiss="modal"  &times;
+    h3 = t('activerecord.actions.ticket_discount.reject_reason')
+    hr
+    = td.text_field :reject_reason

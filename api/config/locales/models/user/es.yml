@@ -1,0 +1,51 @@
+---
+es:
+  activerecord:
+    enums:
+      user:
+        genders:
+          unknown: Prefiero no decir
+          male: Masculino
+          female: Femenino
+    errors:
+      models:
+        user:
+          attributes:
+            birthday:
+              invalid_age: debe ser mayor de 16 años
+
+    models:
+      user: 
+        one: Consumidor
+        other: Consumidores
+    formats:
+      user:
+        selection: "%{id} - %{name} <%{email}>"
+    messages:
+      user:
+        point_deficit: (- %{deficit} reales)
+    attributes:
+      user:
+        id: ID
+        uid: Identificador interno
+        encrypted_password: Contraseña encriptada
+        reset_password_token: Token de reinicio de contraseña
+        reset_password_at: Último intento de reinicio de contraseña
+        remember_created_at: Fecha de recúerdame
+        failed_attemps: Intentos fallidos
+        unlock_token: Token de desbloqueo
+        locked_at: Fecha de bloqueo
+        created_at: Fecha de creación
+        updated_at: Última actualización
+        name: Nombre
+        birthday: Fecha de nacimiento
+        allow_password_change: ¿Permitir cambio de contraseña?        
+        banking_info: Información Bancaria
+        current_points: Puntos
+        segments: Segmentos
+        gender: Género
+        last_name: Apellido
+        gained_points: Puntaje ganado
+        lost_points: Penalizaciones
+        total_spent_points: Puntaje gastado
+        discounts: Descuentos

@@ -1,0 +1,46 @@
+# Logfile created on 2020-10-14 18:06:57 -0300 by logger.rb/66358
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Starting the New Relic agent version 6.13.1 in "development" environment.
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : To prevent agent startup add a NEW_RELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] WARN : No configuration file found. Working directory = /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] WARN : Looked in these locations (based on defaults): /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api/config/newrelic.yml, /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api/newrelic.yml, /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api/config/newrelic.yml, /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api/newrelic.yml, /Users/ezequielschwemmer/.newrelic/newrelic.yml, /Users/ezequielschwemmer/newrelic.yml
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Environment: development
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : No known dispatcher detected.
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Application: development
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing ActiveStorage 5 instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Redis Instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing notifications based Active Record instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Sidekiq instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Rails 3+ middleware instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Net instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing deferred Rack::Builder instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Rack::Builder middleware instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing ActiveJob instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing notifications based Action Controller instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing notification based Action View instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing notifications based Action Cable instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Finished instrumentation
+[2020-10-14 18:06:57 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Doing deferred dependency-detection before Rack startup
+[2020-10-14 18:07:15 -0300 MBP-de-wolox.fibertel.com.ar (5384)] WARN : Agent received a ForceDisconnectException from the server, disconnecting. (410: Gone)
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Starting the New Relic agent version 6.13.1 in "development" environment.
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : To prevent agent startup add a NEW_RELIC_AGENT_ENABLED=false environment variable or modify the "development" section of your newrelic.yml.
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] WARN : No configuration file found. Working directory = /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] WARN : Looked in these locations (based on defaults): /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api/config/newrelic.yml, /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api/newrelic.yml, /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api/config/newrelic.yml, /Users/ezequielschwemmer/Documents/trainings/qa-guikit/api/newrelic.yml, /Users/ezequielschwemmer/.newrelic/newrelic.yml, /Users/ezequielschwemmer/newrelic.yml
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Environment: development
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : No known dispatcher detected.
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Application: development
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] WARN : No license key found. This often means your newrelic.yml file was not found, or it lacks a section for the running environment, 'development'. You may also want to try linting your newrelic.yml to ensure it is valid YML.
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing ActiveStorage 5 instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Redis Instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing notifications based Active Record instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Sidekiq instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Rails 3+ middleware instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Net instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing deferred Rack::Builder instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing Rack::Builder middleware instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing ActiveJob instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing notifications based Action Controller instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing notification based Action View instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Installing notifications based Action Cable instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Finished instrumentation
+[2020-10-16 16:31:32 -0300 MBP-de-wolox.fibertel.com.ar (5384)] INFO : Doing deferred dependency-detection before Rack startup

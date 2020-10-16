@@ -1,0 +1,8 @@
+- content_for(:title)
+  = t "administrate.actions.new_resource", name: t('activerecord.models.push_notification', count: 1).titleize
+header.main-content__header role="banner"
+  h1.main-content__page-title = content_for(:title)
+section.main-content__body = render "form", page: page, segment_notification_page: segment_notification_page
+
+= content_for :javascript_includes do
+  = javascript_include_tag "admin/forms/notifications.js"

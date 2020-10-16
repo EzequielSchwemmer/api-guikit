@@ -1,0 +1,38 @@
+tr.nested-fields
+  td.form-field
+    button.add-product-btn href="#" data-toggle="modal" Agregar
+    .content-modal
+      .modal-window
+        span.close data-dismiss="modal"  &times;
+        h3.product-modal-title Agregar producto
+        hr
+        = f.fields_for :product, f.object.product || Product.new do |builder|
+          = builder.label :code
+          = builder.text_field :code, class: 'products-autocomplete'
+          = render("field_errors", field: :code, f: builder)
+          br
+          = builder.label :name
+          = builder.text_field :name
+          br
+          = builder.label :category
+          = builder.text_field :category
+          br
+          = builder.label :provider
+          = builder.text_field :provider
+        br
+        button.button.modal-product-button data-dismiss='modal' Agregar Producto
+  td.form-field
+    = f.number_field :amount, step: 1
+    = render("field_errors", field: :amount, f: f)
+  td.form-field
+    = f.number_field :price, step: :any, value: f.object.price.to_f
+    = render("field_errors", field: :price, f: f)
+    = render("field_errors", field: :price_cents, f: f)
+    = render("field_errors", field: :price_currency, f: f)
+  td.form-field
+    = f.number_field :discount_price, step: :any, value: f.object.discount_price.to_f
+    = render("field_errors", field: :discount_price, f: f)
+    = render("field_errors", field: :discount_price_cents, f: f)
+    = render("field_errors", field: :discount_price_currency, f: f)    
+  td.form-field
+    = link_to_remove_association "×", f, class: 'button remove-element'

@@ -1,0 +1,52 @@
+= form_for(resource, url: { action: :review }, method: 'POST', html: { class: "form quick-review" }) do |f|
+  h2 = t('activerecord.forms.ticket.reject.title')
+  .form-actions = t('activerecord.messages.ticket.uploaded', count: resource.daily_counter)
+  - if resource.first_ticket?
+    .form-actions = t('activerecord.messages.ticket.first_one')
+  .form-actions = 
+  hr
+  .field-grid
+    = f.hidden_field :status, class: 'status-input'
+    = f.hidden_field :reason_message, class: 'reason-message-input'
+    = f.label :ticket_code
+    .field-unit__field
+      = f.text_field :ticket_code
+      = render "field_errors", field: :ticket_code, f: f
+    = f.label :emitted_at
+    .field-unit__field
+      = f.datetime_field :emitted_at, as: :datetime
+      = render "field_errors", field: :emitted_at, f: f
+    = f.fields_for Reward.new do |reward|
+      = reward.label :points, class: 'field-unit__label'
+      .field-unit__field
+        = reward.number_field :points, value: 0, min: 0, max: Rails.application.secrets.boost_points_limit
+        .field-unit__helper
+          = t('admin.helpers.uploaded_tickets.points')
+  .form-actions.form-actions--row
+    - if policy_for(resource).reject?
+      button.button.danger data-target="reject" data-toggle="modal" = t('activerecord.actions.ticket.reject')
+    - if policy_for(resource).accept?
+      button data-target="accept" data-toggle="modal" = t('activerecord.actions.ticket.accept')
+
+#accept.content-modal
+  .modal-window
+    span.close data-dismiss="modal"  &times;
+    h3 = t('activerecord.actions.ticket.accept_modal')
+    hr
+    input.accept-reason
+    br
+    button.accept_ticket = t('activerecord.actions.ticket.accept')
+
+#reject.content-modal
+  .modal-window
+    span.close data-dismiss="modal"  &times;
+    h3 = t('activerecord.actions.ticket.reject_modal')
+    hr
+    select.reject-reason
+      - Ticket::REJECTED_STATUSES.each do |status|
+        option value="#{status}" = t("activerecord.enums.ticket.status.#{status}")
+    br
+    button.button.danger.reject_ticket = t('activerecord.actions.ticket.reject')
+
+= content_for :javascript_includes do
+  = javascript_include_tag "admin/forms/modal.js"

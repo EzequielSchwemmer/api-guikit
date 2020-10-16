@@ -1,0 +1,21 @@
+doctype html
+html lang = I18n.locale
+  head
+    meta charset="utf-8"
+    meta name="ROBOTS" content="NOODP"
+    meta name="viewport" content="initial-scale=1"
+    title = "Administrador de tickets - #{content_for(:title)}"
+    = render "stylesheet"
+    = csrf_meta_tags
+  body
+    = render "icons"
+    .app-container
+      = render "navigation"
+      .app-container__page
+        = render "sidebar"
+        .app-container__content
+          .main-content role="main"
+            = render "flashes"
+            = yield
+    = render "javascript"
+

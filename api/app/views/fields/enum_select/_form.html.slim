@@ -1,0 +1,7 @@
+.field-unit__label
+  = f.label field.attribute
+.field-unit__group
+  .field-unit__field
+    = f.select(field.attribute, options_from_collection_for_select(field.selectable_options, :value, :text, field.data.presence))
+  .field-unit__errors
+    = render "field_errors", field: field.attribute, f: f

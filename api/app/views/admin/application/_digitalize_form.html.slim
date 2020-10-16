@@ -1,0 +1,47 @@
+= form_for page.resource, url: { action: :recreate }, method: :post do |f|
+  .grid-form
+    = f.label :total
+    .form-field
+      = f.number_field :total, class: 'field-unit__field', step: :any, value: page.resource.total.to_f
+      = render "field_errors", field: :total, f: f
+      = render "field_errors", field: :total_cents, f: f
+      = render "field_errors", field: :total_currency, f: f
+    = f.fields_for :retailer, page.resource.retailer || Retailer.new do |builder|
+      = builder.label :name, t('activerecord.attributes.ticket.retailer')
+      .form-field
+        = builder.text_field :name, class: 'field-unit__field'
+        = render "field_errors", field: :name, f: builder
+    = f.fields_for :branch, page.resource.branch || Branch.new do |builder|
+      = builder.label :name, t('activerecord.attributes.ticket.branch')
+      .form-field
+        = builder.text_field :name, class: 'field-unit__field'
+        = render "field_errors", field: :name, f: builder
+  hr
+  div
+    = f.label :ticket_lines
+    = render "field_errors", field: :ticket_lines, f: f
+    table
+      thead
+        tr
+          th = t('activerecord.models.product.one')
+          th = t('activerecord.attributes.ticket_line.amount')
+          th = t('activerecord.attributes.ticket_line.price')
+          th = t('activerecord.attributes.ticket_line.discount_price')
+          th
+      tbody#ticket-lines
+        = f.fields_for :ticket_lines do |line|
+          = render 'ticket_line_fields', f: line
+        tr.links
+          td colspan="5"
+            = link_to_add_association t('activerecord.actions.ticket.add_line'), f, :ticket_lines, class: 'button add-line', \
+                                      'data-association-insertion-node': '#ticket-lines'
+    hr
+    .form-actions
+      - if policy_for(page.resource).revert_review?
+        = f.submit t('activerecord.actions.ticket.revert_review'), name: 'revert', class: 'button danger'
+      - if policy_for(page.resource).digitalize?
+        = f.submit t('activerecord.actions.ticket.digitalize'), name: 'digitalize'
+
+= content_for :javascript_includes do
+  = javascript_include_tag "admin/forms/products.js"
+  = javascript_include_tag "admin/forms/modal.js"

@@ -1,0 +1,33 @@
+---
+es:
+  reward:
+    concepts:
+      first_ticket_reward: Primer ticket subido
+      registration_reward: Registro a la plataforma
+      penalized_reward: Penalizado por contenido inapropiado
+      ticket_reward: Ticket subido
+      redeemed_ticket: Ticket redimido
+      banking_info_reward: Registro información bancaria
+      penalized_reward: Penalizado por rechazo de ticket
+      boosted_points: Recopensa por boosts
+    notifications:
+      custom:
+        title: ¡Ganaste puntos!
+        body: Te recompensamos %{points} puntos debido a "%{concept}".
+  activerecord: &reward_attributes
+    models:
+      reward:
+        one: Recompensa
+        other: Recompensas
+    attributes:
+      reward:
+        users: Consumidores
+        author: Creador manual
+        ticket: Ticket
+        points: Puntaje
+        concept: Concepto
+        created_at: Fecha de creación
+        updated_at: Última actualización
+        notify: Notificar usuario
+  activemodel:
+    <<: *reward_attributes

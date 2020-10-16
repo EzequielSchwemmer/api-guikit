@@ -1,0 +1,7 @@
+- if field.data.present?
+  dl.attribute-set
+    - field.nested_show.attributes.each do |attribute|
+      dt.attribute-label id=attribute.name
+        = t("activerecord.attributes.#{field.data.class.model_name.i18n_key}.#{attribute.name}")
+      dd class="attribute-data attribute-data--#{attribute.html_class}"
+        = render_field attribute, page: page

@@ -1,0 +1,63 @@
+header
+  nav
+    a
+      h1
+        'Administrador de tickets.
+.container
+  p
+    = t(:hello).capitalize + ' ' + @resource.email + '!'
+  p
+    = t '.unlock_link_msg'
+  p
+    = link_to(t('.unlock_link'), unlock_url(@resource, unlock_token: @token), class: 'password-change-link').html_safe
+  p
+    = t '.ignore_mail_msg'
+  p.no-changes-msg
+    = t '.no_changes_msg'
+
+scss:
+  $body-bg-color: linear-gradient(200deg, #0049f9 50%, #05a5ff);
+  $main-font: Quicksand, sans-serif;
+  $main-white: #FFFFFF;
+  $header-box-shadow: 0 5px 25px 0 rgba(0,0,0,.3);
+  $link-color: #f5a623;
+  @import url('https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap');
+
+  body {
+    background: $body-bg-color;
+    font-family: $main-font;
+
+    header {
+      background-color: $main-white;
+      box-shadow: $header-box-shadow;
+      flex-direction: column;
+      height: 70px;
+      justify-content: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      display: flex;
+      width: 100%;
+
+      h1{
+        margin-left: 50px;
+        font-size: 30px;
+        font-weight: 700;
+      }
+    }
+
+    .container {
+      margin-top: 12%;
+      color: $main-white;
+      padding: 0 50px;
+
+      .password-change-link{
+        color: $link-color;
+        font-weight: 700;
+      }
+
+      .no-changes-msg{
+        font-weight: 700;
+      }
+    }
+  }

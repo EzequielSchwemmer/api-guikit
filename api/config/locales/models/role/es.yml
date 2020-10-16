@@ -1,0 +1,12 @@
+es:
+  activerecord:
+    models:
+      role:
+        one: Rol
+        other: Roles
+    attributes:
+      role:
+        name: Nombre
+        resource_type: Tipo
+        created_at: Fecha de cración
+        updated_at: Última actualización

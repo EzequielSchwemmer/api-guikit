@@ -1,0 +1,8 @@
+---
+en:
+  administrate:
+    actions:
+      sign_out: Sign out
+    navigation:
+      messages:
+        hello: Hello, %{name} -

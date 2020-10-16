@@ -1,0 +1,13 @@
+- content_for(:title) do
+  = t("administrate.actions.show_resource", name: page.page_title)
+header.main-content__header role="banner"
+  h1.main-content__page-title
+    = content_for(:title)
+section.main-content__body
+  .ticket-view
+    = render("ticket_slider", ticket: page.resource)
+    .big-margin
+      = render("ticket_information", page: page)
+      .field-unit__group
+        = render("promotions_review_form", page: page)
+  

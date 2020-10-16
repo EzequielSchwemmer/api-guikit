@@ -1,0 +1,6 @@
+es:
+  activerecord:
+    models:
+      database:
+        one: Base de datos
+        other: Base de datos

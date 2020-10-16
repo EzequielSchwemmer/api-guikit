@@ -1,0 +1,113 @@
+---
+es:
+  activerecord:
+    errors:
+      models:
+        ticket_discounts:
+          invalid: Los descuentos seleccionados son invalidos
+        reviewed_ticket:
+          attributes:
+            total:
+              invalid_currency: El valor total es inválido
+    forms:
+      ticket:
+        reject:
+          title: Revisión rápida
+    actions:
+      ticket:
+        penalize: Penalizar ticket
+        penalize_confirmation: ¿Está seguro que quiere penalizar el ticket? Esta acción hará que el usuario pierda puntos
+        reject: Rechazar ticket
+        accept: Aceptar ticket
+        digitalize: Digitalizar ticket
+        add_line: Agregar fila
+        review: Terminar revisión
+        assigned_segments: Los segmentos del usuario fueron cambiados exitosamente
+        revert_review: Retornar a revisión rápida
+        accept_modal: Motivo de aceptación
+        reject_modal: Motivo de rechazo
+    messages:
+      ticket:
+        uploaded: "Ticket #%{count} subido por el usuario del día"
+        accepted: El ticket fue aceptado exitosamente.
+        rejected: El ticket fue rechazado con el motivo '%{reason}' exitosamente.
+        penalized: El ticket fue penalizado por contenido inapropiado
+        digitalized: El ticket fue digitalizado exitosamente.
+        first_one: ¡Primer ticket del usuario!
+        no_discounts: No hay promociones seleccionadas en el ticket
+        reviewed: El ticket fue validado exitosamente
+        reverted: El ticket fue devuelto a revisión rápida
+        ticket_lines_missing: Por favor agregue una fila con su respectivo EAN y cantidad
+    enums:
+      ticket:
+        status:
+          uploaded: Subido
+          reviewed: Revisado
+          digitalized: Digitalizado
+          approved: Aprobado
+          paid: Pagado
+          not_a_ticket: No es un ticket
+          blurred: Imagen Borrosa
+          invalid_ticket: Ticket inválido
+          too_old: Ticket viejo
+          hit_limit: Limite diario alcanzado
+          penalized: Contenido inapropiado
+          already_used: Ticket ya redimido
+    models:
+      reviewed_ticket:
+        one: Ticket a digitalizar
+        other: Tickets a digitalizar
+      uploaded_ticket:
+        one: Revisión rápida
+        other: Revisión rápida
+      digitalized_ticket:
+        one: Pendientes de aprobación
+        other: Pendientes de aprobación
+      unsegmented_ticket:
+        one: Revisión de segmentos
+        other: Revisión de segmentos        
+      ticket: 
+        one: Ticket
+        other: Galería de Tickets
+      pending_payment:
+        one: Pago pendiente
+        other: Pagos pendientes
+    attributes:
+      ticket: &ticket_attributes
+        user: Usuario
+        status: Estado
+        id: Identificador
+        created_at: Fecha de subida
+        daily_counter: Contador diario
+        emitted_at: Fecha y hora de compra
+        total: Total
+        ticket_code: Codigo identificador
+        retailer: Retailer
+        branch: Sucursal
+        ticket_lines: Filas
+        updated_at: Última actualización
+        ticket_discounts: Descuentos seleccionados
+        refund: Reintegro
+        segments_chooser: Segmentos cambiados por
+        segments_chosen_at: Fecha de cambio de segmentos
+      reviewed_ticket:
+        <<: *ticket_attributes
+      uploaded_ticket:
+        <<: *ticket_attributes
+        status: Motivo de rechazo
+      digitalized_ticket:
+        <<: *ticket_attributes
+      unsegmented_ticket:
+        <<: *ticket_attributes
+      pending_payment:
+        <<: *ticket_attributes
+        user_email: Correo
+        user_id: ID Usuario
+        user_name: Nombre
+        user_last_name: Apellidos
+        bank_name: Entidad bancaria
+        bank_alias: Alias CBU
+        cbu: CBU
+        total_refund: Total de reintegro
+        cuit: CUIT
+        ticket_count: Tickets

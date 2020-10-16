@@ -1,0 +1,5 @@
+es:
+  pictures:
+    wrong_size: Los archivos adjuntos son demasiado pesados
+    attached: No se han adjuntado fotos
+    wrong_format: Los archivos adjuntos no son fotos

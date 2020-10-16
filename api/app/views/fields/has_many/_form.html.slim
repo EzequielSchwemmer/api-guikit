@@ -1,0 +1,8 @@
+.field-unit__label
+  = f.label field.attribute
+.field-unit__group
+  .field-unit__field.selectize
+    = f.select(field.attribute_key, nil, {}, multiple: true) do
+      = options_for_select(field.associated_resource_options, field.selected_options)
+  .field-unit__errors
+    = render "field_errors", field: field.attribute, f: f

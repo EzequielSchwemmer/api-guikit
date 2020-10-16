@@ -1,0 +1,52 @@
+$_navigation-link-padding: 0.6em;
+
+.navigation {
+  display: flex;
+  padding: ($small-spacing / 2) $small-spacing;
+  background: $primary-background-color-regular;
+  border-bottom: $small-spacing solid $primary-background-color-dark;
+  box-shadow: 0 0 6px 0 rgba($black, 0.12),
+              0 2px 2px rgba($black, 0.2);
+}
+
+.navigation__link {
+  background-color: transparent;
+  color: $primary-font-color-regular;
+  display: block;
+  line-height: 1;
+  margin-left: -($_navigation-link-padding);
+  padding: $_navigation-link-padding;
+  transition: background-color $base-duration $base-timing,
+              color $base-duration $base-timing;
+  text-decoration: none;
+  &:not(:last-of-type) {
+    margin-bottom: $small-spacing;
+  }
+
+  &:hover {
+    background-color: $primary-background-color-dark;
+    border-radius: $base-border-radius;
+    color: $primary-font-color-light;
+  }
+}
+
+.navigation__link--active {
+  font-weight: $bold-font-weight;
+}
+
+.navigation__title {
+  flex: 1;
+  color: $primary-font-color-regular;
+  display: flex;
+  align-items: center;
+}
+
+.navigation__text {
+  color: $primary-font-color-dark;
+  padding-right: $small-spacing;
+}
+
+.navigation__user_menu {
+  display: flex;
+  align-items: center;
+}

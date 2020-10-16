@@ -1,0 +1,54 @@
+.field-unit {
+  @include administrate-clearfix;
+  align-items: center;
+  display: flex;
+  margin-bottom: $base-spacing;
+  width: 100%;
+}
+
+.field-unit__label {
+  margin-left: 1rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.field-unit__field {
+  float: left;
+  margin-left: 2rem;
+  flex: 1;
+}
+
+.field-unit__errors {
+  color: $red;
+  margin-left: 2rem;
+}
+
+.field-unit--nested {
+  border: $base-border;
+  margin-left: 7.5%;
+  padding: $small-spacing;
+  width: 50%;
+
+  .field-unit__field {
+    width: calc(75% - 1rem);
+  }
+
+  .field-unit__label {
+    width: calc(25% - 1rem);
+  }
+}
+
+.boolean-positive {
+  font-weight: bold;
+  color: $action-color;
+}
+
+.boolean-negative {
+  font-weight: bold;
+  color: $red;
+}
+
+.field-unit__group {
+  display: flex;
+  flex-direction: column;
+}

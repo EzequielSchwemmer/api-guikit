@@ -1,0 +1,6 @@
+= form_for(page.resource, url: { action: :create }, method: :post, html: { class: "form" }) do |f|
+  .field-grid
+    - page.attributes.each do |attribute|
+      = render_field attribute, f: f
+  .form-actions
+    = f.submit t('admin.actions.push_notifications.send')

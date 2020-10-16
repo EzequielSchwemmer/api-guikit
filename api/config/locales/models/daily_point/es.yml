@@ -1,0 +1,13 @@
+es:
+  activerecord:
+    models:
+      daily_point:
+        one: Limite de puntaje diario
+        other: Limites de puntaje diarios
+    attributes:
+      daily_point:
+        points: Puntaje ganado
+        date: Fecha
+        user: Consumidor
+        created_at: Fecha de creación
+        updated_at: Última actualizacion

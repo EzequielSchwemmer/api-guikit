@@ -1,0 +1,2 @@
+class BankingInfoPolicy < AdminPolicy
+end

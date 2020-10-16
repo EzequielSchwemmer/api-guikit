@@ -1,0 +1,27 @@
+table aria-labelledby=table_title
+  thead
+    tr
+      - collection_presenter.attribute_types.each do |attr_name, attr_type|
+        th 
+          .cell-label class="cell-label--header cell-label--#{attr_type.html_class} cell-label--#{collection_presenter.ordered_html_class(attr_name)}" scope='col' role='columnmheader' aria-sort=sort_order(collection_presenter.ordered_html_class(attr_name))
+            = link_to sanitized_order_params(page, collection_field_name).merge(collection_presenter.order_params_for(attr_name, key: collection_field_name))
+              = t( \
+                  "activerecord.attributes.#{collection_presenter.resource_name}.#{attr_name}", \
+                  default: attr_name.to_s, \
+                ).titleize
+              - if collection_presenter.ordered_by?(attr_name)
+                span class=("cell-label__sort-indicator cell-label__sort-indicator--#{collection_presenter.ordered_html_class(attr_name)}") 
+                  svg aria-hidden="true" 
+                    use xlink:href="#icon-up-caret" 
+
+      - [valid_action?(:edit, collection_presenter.resource_name), valid_action?(:destroy, collection_presenter.resource_name)].count(true).times
+        th scope="col"
+
+  tbody
+    - resources.each do |resource|
+      tr class='js-table-row' tabindex='0'
+          tr.js-table-row tabindex="0" role="link" data-url=admin_discount_path(resource.discount_id)
+            - collection_presenter.attributes_for(resource).each do |attribute|
+              td class="cell-data cell-data--#{attribute.html_class}"
+                a.action-show href="#{admin_discount_path(resource.discount_id)}"
+                  = render_field attribute
